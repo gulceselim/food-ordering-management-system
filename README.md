@@ -18,7 +18,7 @@ It is a web application where users can order food without leaving their homes a
 
 | Variable Name | Data Type | Detail |
 | --- | --- | --- |
-| restaurant_id | İnt | Restaurant ID Number |
+| restaurant_id | INT | Restaurant ID Number |
 | restaurant_name | VARCHAR | Restaurant Name |
 | restaurant_address | VARCHAR | Restaurant Address |
 | phone_number | VARCHAR | Restaurant Phone Number |
