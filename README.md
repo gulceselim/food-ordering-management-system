@@ -8,7 +8,7 @@ It is a web application where users can order food without leaving their homes a
 
 ### Tech
 
-* Asp.Net MVC Framework
+* Asp.Net MVC 
 * Entity Framework
 * MS Sql Server
 
