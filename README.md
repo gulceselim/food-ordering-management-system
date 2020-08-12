@@ -6,11 +6,22 @@ It is a web application where users can order food without leaving their homes a
 
 ## Getting Started
 
-### Tech
+### Programming Languages
 
-* Asp.Net MVC 
+* C#
+* ASP
+* JavaScript
+
+### Additional
+
 * Entity Framework
 * MS Sql Server
+* Code First
+
+### UI Frameworks
+
+* Bootstrap
+* ASP.NET Framework 
 
 ## Data Dictionary
 
