@@ -9,7 +9,6 @@ It is a web application where users can order food without leaving their homes a
 ### Programming Languages
 
 * C#
-* ASP
 * JavaScript
 
 ### Additional
