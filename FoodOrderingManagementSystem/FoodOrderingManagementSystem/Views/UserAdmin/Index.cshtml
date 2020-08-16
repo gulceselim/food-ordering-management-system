@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Users";
+}
+@using FoodOrderingManagementSystem.Models
+@model List<user>
+
+
+<div class="card-body">
+    <table class="table table-bordered table-striped mb-0" id="datatable-editable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>Score</th>
+                <th>Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (user user in Model)
+            {
+            <tr>
+                <td>@user.first_name</td>
+                <td>@user.last_name</td>
+                <td>@user.username</td>
+                <td>@user.user_email</td>
+                <td>@user.user_address</td>
+                <td>Deneme</td>
+                <td>Deneme</td>
+                <td>@user.user_score</td>
+
+
+                <td class="actions">
+                    <a href="/UserAdmin/UserUpdate/@user.users_id" class="btn btn-modern btn-rounded btn-success mb-2">Güncelle</a>
+                    <a href="#" class="btn btn-modern btn-rounded btn btn-danger restSil" data-restid="">Sil</a>
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+

@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.title = "User Update";
+
+}
+
+@using FoodOrderingManagementSystem.Models
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="block">
+            <div class="block-content-outer" style="display: block;">
+                <div class="block-content-inner">
+                    <form action="/UserAdmin/UserUpdate" method="post" role="form">
+                        <input type="hidden" name="users_id" value="@Model.users_id" />
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <br />
+                            <input value="@Model.first_name" type="text" class="form-control" id="exampleInputEmail1" name="first_name">
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <br />
+                            <input value="@Model.last_name" type="text" class="form-control" id="exampleInputEmail1" name="last_name">
+                        </div>
+                        <div class="form-group">
+                            <label>Username</label>
+                            <br />
+                            <input value="@Model.username" type="text" class="form-control" id="exampleInputEmail1" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <br />
+                            <input value="@Model.user_email" type="text" class="form-control" id="exampleInputEmail1" name="user_email">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <br />
+                            <input value="@Model.phone_number" type="text" class="form-control" id="exampleInputEmail1" name="phone_number">
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <br />
+                            <input value="@Model.user_address" type="text" class="form-control" id="exampleInputEmail1" name="user_address">
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <br />
+                            <input value="Deneme" type="text" class="form-control" id="exampleInputEmail1" name="">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

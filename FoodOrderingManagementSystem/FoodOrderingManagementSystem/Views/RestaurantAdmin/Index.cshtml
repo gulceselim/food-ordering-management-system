@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Restaurant & Product";
+}
+@using FoodOrderingManagementSystem.Models
+@model List<restaurant>
+
+
+<div class="card-body">
+    <table class="table table-bordered table-striped mb-0" id="datatable-editable">
+        <thead>
+            <tr>
+                <th>Restaurant Name</th>
+                <th>Address</th>
+                <th>Phone Number</th>
+                <th>Rating Score</th>
+                <th>City</th>
+                <th>Actions</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var restaurants in Model)
+            {
+                <tr>
+                    <td>@restaurants.restaurant_name</td>
+                    <td>@restaurants.restaurant_address</td>
+                    <td>@restaurants.phone_number</td>
+                    <td>@restaurants.rating</td>
+                    <td>Deneme</td>
+
+
+                    <td class="actions">
+                        <a href="/RestaurantAdmin/RestaurantUpdate/@restaurants.restaurant_id" class="btn btn-modern btn-rounded btn-success mb-2">Güncelle</a>
+                        <a href="#" class="btn btn-modern btn-rounded btn btn-danger restSil" data-restid="@restaurants.restaurant_id">Sil</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>    
+</div>
+
+
+@section scripts{
+
+    <script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
+
+    <script>
+        $(".restSil").click( function ()
+        {
+            var result = confirm("Kayıt Silinsin mi? ");
+            if (result) {
+                var restID = $(this).data("restid");
+
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: "/RestaurantAdmin/RestaurantDelete/" + restID,
+                        success: function () {
+                            alert("Kayıt Silindi");
+                            window.location.replace("/RestaurantAdmin/Index");
+                        },
+                        error: function () {
+                            alert("Hata oluştu");
+                            window.location.replace("/RestaurantAdmin/Index");
+
+                        }
+                    });
+            }
+            else {
+                alert("iptal"); 
+            }
+
+        });
+
+
+    </script>
+}

@@ -1,0 +1,67 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="../../Content/assets_1/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="../../Content/assets_1/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+
+    <meta name="keywords" content="Project" />
+    <meta name="description" content="Food Ordering Management System">
+    <meta name="author" content="Selim Gulce">
+
+    <title>
+        Food Ordering Management System
+    </title>
+    <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <!-- CSS Files -->
+    <link href="../../Content/assets_1/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="../../Content/assets_1/demo/demo.css" rel="stylesheet" />
+
+
+
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="~/Content/assets_2/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/assets_2/vendor/fontawesome-free/css/all.min.css">
+   
+
+</head>
+
+<body class="">
+    <div class="wrapper ">
+        @Html.Partial("_SidebarAdminPanel")
+        <div class="main-panel">
+            <!-- Navbar -->
+            @Html.Partial("_HeaderAdminPanel")
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_ScriptAdminPanel")
+    @RenderSection("scripts", false)
+    @RenderSection("active", false)
+
+
+</body>
+
+</html>

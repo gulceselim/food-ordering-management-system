@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="restaurant_list" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="food_ordering_systemEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_restaurant_list" ReturnType="Collection(restaurant_list.sp_restaurant_list_Result)" />
+  </EntityContainer>
+  <ComplexType Name="sp_restaurant_list_Result">
+    <Property Type="String" Name="restaurant_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="restaurant_address" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="city_name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="phone_number" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="rating" Nullable="true" />
+  </ComplexType>
+</Schema>
