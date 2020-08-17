@@ -10,7 +10,7 @@ namespace FoodOrderingManagementSystem.Controllers
 {
     public class UserAdminController : Controller
     {
-        FoodOrderingMS models = new FoodOrderingMS();
+        FoodOrderingMSModel models = new FoodOrderingMSModel();
         // GET: UserAdmin
         public ActionResult Index()
         {
@@ -34,7 +34,7 @@ namespace FoodOrderingManagementSystem.Controllers
             user.last_name = u.last_name;
             user.user_address = u.user_address;
             user.user_email = u.user_email;
-            user.user_email = u.username;
+            user.username = u.username;
             user.phone_number = u.phone_number;
             models.SaveChanges();
             return RedirectToAction("Index");

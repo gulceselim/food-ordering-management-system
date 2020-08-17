@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using FoodOrderingManagementSystem.Models;
 
 namespace FoodOrderingManagementSystem.Controllers
 {
     public class RestaurantAdminController : Controller
     {
-        FoodOrderingMS models = new FoodOrderingMS();
+        FoodOrderingMSModel models = new FoodOrderingMSModel();
 
         // GET: Restaurant
         public ActionResult Index()
@@ -35,6 +34,7 @@ namespace FoodOrderingManagementSystem.Controllers
             restaurant.restaurant_name = r.restaurant_name;
             restaurant.restaurant_address = r.restaurant_address;
             restaurant.phone_number = r.phone_number;
+            restaurant.username = r.username;
             models.SaveChanges();
             return RedirectToAction("Index");
         }
