@@ -6,52 +6,89 @@
 
 @using FoodOrderingManagementSystem.Models
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="block">
-            <div class="block-content-outer" style="display: block;">
-                <div class="block-content-inner">
-                    <form action="/UserAdmin/UserUpdate" method="post" role="form">
-                        <input type="hidden" name="users_id" value="@Model.users_id" />
-                        <div class="form-group">
-                            <label>First Name</label>
-                            <br />
-                            <input value="@Model.first_name" type="text" class="form-control" id="exampleInputEmail1" name="first_name">
+<ddiv class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Edit Profile</h4>
+                <p class="card-category">Complete your profile</p>
+            </div>
+            <label> </label>
+            <label> </label>
+            <label> </label>
+            <label> </label>
+            <div class="card-body">
+                <form action="/UserAdmin/UserUpdate" method="post" role="form">
+                    <input type="hidden" name="users_id" value="@Model.users_id" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+
+                                <label class="bmd-label-floating">First Name</label>
+                                <input value="@Model.first_name" type="text" class="form-control" name="first_name">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Last Name</label>
-                            <br />
-                            <input value="@Model.last_name" type="text" class="form-control" id="exampleInputEmail1" name="last_name">
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Last Name</label>
+                                <input value="@Model.last_name" type="text" class="form-control" name="last_name">
+
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Username</label>
-                            <br />
-                            <input value="@Model.username" type="text" class="form-control" id="exampleInputEmail1" name="username">
+                    </div>
+                    <label> </label>
+                    <label> </label>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Username</label>
+                                <input value="@Model.username" type="text" class="form-control" name="username">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <br />
-                            <input value="@Model.user_email" type="text" class="form-control" id="exampleInputEmail1" name="user_email">
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Email</label>
+                                <input value="@Model.user_email" type="text" class="form-control" name="user_email">
+
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Phone Number</label>
-                            <br />
-                            <input value="@Model.phone_number" type="text" class="form-control" id="exampleInputEmail1" name="phone_number">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Address</label>
+                                <input value="@Model.user_address" type="text" class="form-control" name="user_address">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Address</label>
-                            <br />
-                            <input value="@Model.user_address" type="text" class="form-control" id="exampleInputEmail1" name="user_address">
+                    </div>
+                    <label> </label>
+                    <label> </label>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">City</label>
+                                <input value="" type="text" class="form-control" name="">
+
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>City</label>
-                            <br />
-                            <input value="Deneme" type="text" class="form-control" id="exampleInputEmail1" name="">
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <span> </span><label class="bmd-label-floating">Phone Number</label>
+                                <input value="@Model.phone_number" type="text" class="form-control" name="phone_number">
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </form>
-                </div>
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Role</label>
+                                <input value="" type="text" class="form-control" disabled="" name="">
+
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">Update Profile</button>
+                    <div class="clearfix"></div>
+                </form>
             </div>
         </div>
     </div>
-</div>
+   

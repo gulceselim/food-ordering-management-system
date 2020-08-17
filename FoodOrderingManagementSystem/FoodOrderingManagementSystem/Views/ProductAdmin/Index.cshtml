@@ -1,0 +1,113 @@
+﻿
+@{
+    ViewBag.Title = "Products";
+}
+
+@using FoodOrderingManagementSystem.Models
+@model List<product>
+
+@foreach (restaurant restaurant in ViewBag.restaurant)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">@restaurant.restaurant_name</h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+
+                                <tr>
+                                    <th>Restaurant Name</th>
+                                    <th>Image</th>
+                                    <th>Product Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Detail</th>
+                                    <th>Active</th>
+                                    <th>Actions</th>
+
+                                </tr>
+                               
+                            </thead>
+                            <tbody>
+
+                                @foreach (var product in Model)
+                                {
+                                    if (restaurant.restaurant_id == product.restaurant_id)
+                                    {
+                                        <tr>
+                                            <td>@product.restaurant.restaurant_name</td>
+                                            <td class="w-1">
+                                                <img src=@product.product_image class="img-fluid img-thumbnail" />
+                                            </td>
+                                            <td>@product.product_name</td>
+                                            <td>@product.category.category_name</td>
+                                            <td>@product.price</td>
+                                            <td>@product.details</td>
+                                            <td>
+                                                @if (product.active == true)
+                                                {
+                                                    <button class="btn btn-success">Active</button>
+                                                }
+                                                else
+                                                {
+                                                    <button class="btn btn-danger">Passive</button>
+                                                }
+                                            </td>
+
+
+                                            <td class="actions">
+                                                <a href="" class="btn btn-modern btn-rounded btn-success mb-2">Güncelle</a>
+                                                <a href="#" class="btn btn-modern btn-rounded btn btn-danger restSil" data-restid="">Sil</a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+    @section scripts{
+
+        <script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
+
+        <script>
+            $(".restSil").click(function () {
+                var result = confirm("Kayıt Silinsin mi? ");
+                if (result) {
+                    var restID = $(this).data("restid");
+
+                    $.ajax(
+                        {
+                            type: "POST",
+                            url: "/RestaurantAdmin/RestaurantDelete/" + restID,
+                            success: function () {
+                                alert("Kayıt Silindi");
+                                window.location.replace("/RestaurantAdmin/Index");
+                            },
+                            error: function () {
+                                alert("Hata oluştu");
+                                window.location.replace("/RestaurantAdmin/Index");
+
+                            }
+                        });
+                }
+                else {
+                    alert("iptal");
+                }
+
+            });
+
+
+        </script>
+    }
