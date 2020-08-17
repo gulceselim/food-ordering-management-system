@@ -16,11 +16,12 @@ It is a web application where users can order food without leaving their homes a
 * Entity Framework
 * MS Sql Server
 * Code First
+* JQuery
 
 ### UI Frameworks
 
 * Bootstrap
-* ASP.NET Framework 
+* .NET Framework 
 
 ## Data Dictionary
 
