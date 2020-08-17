@@ -8,6 +8,13 @@ namespace FoodOrderingManagementSystem.Models
 
     public partial class user
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public user()
+        {
+            comments = new HashSet<comment>();
+            orders = new HashSet<order>();
+        }
+
         [Key]
         public int users_id { get; set; }
 
@@ -39,5 +46,25 @@ namespace FoodOrderingManagementSystem.Models
         public string user_address { get; set; }
 
         public int? user_score { get; set; }
+
+        public int? order_count { get; set; }
+
+        public int role_id { get; set; }
+
+        public int city_id { get; set; }
+
+        public int payment_id { get; set; }
+
+        public virtual city city { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<comment> comments { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<order> orders { get; set; }
+
+        public virtual payment payment { get; set; }
+
+        public virtual role role { get; set; }
     }
 }

@@ -35,7 +35,15 @@ namespace FoodOrderingManagementSystem.Models
         [StringLength(50)]
         public string product_image { get; set; }
 
+        public int category_id { get; set; }
+
+        public int restaurant_id { get; set; }
+
+        public virtual category category { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_product> order_product { get; set; }
+
+        public virtual restaurant restaurant { get; set; }
     }
 }

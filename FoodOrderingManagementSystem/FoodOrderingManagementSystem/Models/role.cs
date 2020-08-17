@@ -8,11 +8,24 @@ namespace FoodOrderingManagementSystem.Models
 
     public partial class role
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public role()
+        {
+            restaurants = new HashSet<restaurant>();
+            users = new HashSet<user>();
+        }
+
         [Key]
         public int role_id { get; set; }
 
         [Required]
         [StringLength(50)]
         public string role_name { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<restaurant> restaurants { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<user> users { get; set; }
     }
 }

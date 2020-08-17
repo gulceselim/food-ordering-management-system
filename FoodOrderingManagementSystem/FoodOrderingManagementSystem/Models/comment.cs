@@ -16,5 +16,13 @@ namespace FoodOrderingManagementSystem.Models
         [Required]
         [StringLength(50)]
         public string comment_text { get; set; }
+
+        public int users_id { get; set; }
+
+        public int restaurant_id { get; set; }
+
+        public virtual restaurant restaurant { get; set; }
+
+        public virtual user user { get; set; }
     }
 }

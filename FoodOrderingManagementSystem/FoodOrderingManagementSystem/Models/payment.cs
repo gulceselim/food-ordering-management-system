@@ -8,6 +8,12 @@ namespace FoodOrderingManagementSystem.Models
 
     public partial class payment
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public payment()
+        {
+            users = new HashSet<user>();
+        }
+
         [Key]
         public int payment_id { get; set; }
 
@@ -22,5 +28,8 @@ namespace FoodOrderingManagementSystem.Models
         [Required]
         [StringLength(50)]
         public string card_cvv { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<user> users { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace FoodOrderingManagementSystem.Models
         public city()
         {
             city_restaurant = new HashSet<city_restaurant>();
+            users = new HashSet<user>();
         }
 
         [Key]
@@ -21,9 +22,14 @@ namespace FoodOrderingManagementSystem.Models
         [StringLength(50)]
         public string city_name { get; set; }
 
-        public int city_zip_code { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string city_zip_code { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<city_restaurant> city_restaurant { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<user> users { get; set; }
     }
 }

@@ -5,10 +5,10 @@ namespace FoodOrderingManagementSystem.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class FoodOrderingMS : DbContext
+    public partial class FoodOrderingMSModel : DbContext
     {
-        public FoodOrderingMS()
-            : base("name=FoodOrderingMS")
+        public FoodOrderingMSModel()
+            : base("name=FoodOrderingMSModel")
         {
         }
 
@@ -32,12 +32,26 @@ namespace FoodOrderingManagementSystem.Models
                 .Property(e => e.category_name)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<category>()
+                .HasMany(e => e.products)
+                .WithRequired(e => e.category)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<city>()
                 .Property(e => e.city_name)
                 .IsUnicode(false);
 
             modelBuilder.Entity<city>()
+                .Property(e => e.city_zip_code)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<city>()
                 .HasMany(e => e.city_restaurant)
+                .WithRequired(e => e.city)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<city>()
+                .HasMany(e => e.users)
                 .WithRequired(e => e.city)
                 .WillCascadeOnDelete(false);
 
@@ -79,6 +93,11 @@ namespace FoodOrderingManagementSystem.Models
                 .Property(e => e.card_cvv)
                 .IsUnicode(false);
 
+            modelBuilder.Entity<payment>()
+                .HasMany(e => e.users)
+                .WithRequired(e => e.payment)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<product>()
                 .Property(e => e.product_name)
                 .IsUnicode(false);
@@ -109,6 +128,14 @@ namespace FoodOrderingManagementSystem.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<restaurant>()
+                .Property(e => e.username)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<restaurant>()
+                .Property(e => e.restaurant_password)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<restaurant>()
                 .Property(e => e.phone_number)
                 .IsUnicode(false);
 
@@ -117,9 +144,34 @@ namespace FoodOrderingManagementSystem.Models
                 .WithRequired(e => e.restaurant)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<restaurant>()
+                .HasMany(e => e.comments)
+                .WithRequired(e => e.restaurant)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<restaurant>()
+                .HasMany(e => e.products)
+                .WithRequired(e => e.restaurant)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<restaurant>()
+                .HasMany(e => e.shippers)
+                .WithRequired(e => e.restaurant)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<role>()
                 .Property(e => e.role_name)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<role>()
+                .HasMany(e => e.restaurants)
+                .WithRequired(e => e.role)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<role>()
+                .HasMany(e => e.users)
+                .WithRequired(e => e.role)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<shipper>()
                 .Property(e => e.first_name)
@@ -165,6 +217,16 @@ namespace FoodOrderingManagementSystem.Models
             modelBuilder.Entity<user>()
                 .Property(e => e.user_address)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<user>()
+                .HasMany(e => e.comments)
+                .WithRequired(e => e.user)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<user>()
+                .HasMany(e => e.orders)
+                .WithRequired(e => e.user)
+                .WillCascadeOnDelete(false);
         }
     }
 }

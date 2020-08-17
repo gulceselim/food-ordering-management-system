@@ -29,7 +29,11 @@ namespace FoodOrderingManagementSystem.Models
         [StringLength(50)]
         public string identification_number { get; set; }
 
+        public int restaurant_id { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order_shipper> order_shipper { get; set; }
+
+        public virtual restaurant restaurant { get; set; }
     }
 }
