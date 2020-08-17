@@ -117,6 +117,7 @@
     <Content Include="Content\assets_1\img\sidebar-2.jpg" />
     <Content Include="Content\assets_1\img\sidebar-3.jpg" />
     <Content Include="Content\assets_1\img\sidebar-4.jpg" />
+    <Content Include="Content\assets_1\img\whopper-menu-1.png" />
     <Content Include="Content\assets_1\js\core\bootstrap-material-design.min.js" />
     <Content Include="Content\assets_1\js\core\jquery.min.js" />
     <Content Include="Content\assets_1\js\core\popper.min.js" />
@@ -6399,8 +6400,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoryAdminController.cs" />
+    <Compile Include="Controllers\CommentAdminController.cs" />
+    <Compile Include="Controllers\OrderAdminController.cs" />
+    <Compile Include="Controllers\ProductAdminController.cs" />
     <Compile Include="Controllers\RestaurantAdminController.cs" />
     <Compile Include="Controllers\RestaurantUserController.cs" />
+    <Compile Include="Controllers\RoleAdminController.cs" />
+    <Compile Include="Controllers\ShipperAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -6409,7 +6416,7 @@
     <Compile Include="Models\city.cs" />
     <Compile Include="Models\city_restaurant.cs" />
     <Compile Include="Models\comment.cs" />
-    <Compile Include="Models\FoodOrderingMS.cs" />
+    <Compile Include="Models\FoodOrderingMSModel.cs" />
     <Compile Include="Models\order.cs" />
     <Compile Include="Models\order_product.cs" />
     <Compile Include="Models\order_shipper.cs" />
@@ -6439,6 +6446,8 @@
     <Content Include="Views\UserAdmin\Index.cshtml" />
     <Content Include="Views\UserAdmin\_viewstart.cshtml" />
     <Content Include="Views\UserAdmin\UserUpdate.cshtml" />
+    <Content Include="Views\ProductAdmin\_viewstart.cshtml" />
+    <Content Include="Views\ProductAdmin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6448,6 +6457,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\CategoryAdmin\" />
+    <Folder Include="Views\CommentAdmin\" />
+    <Folder Include="Views\OrderAdmin\" />
+    <Folder Include="Views\RoleAdmin\" />
+    <Folder Include="Views\ShipperAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
