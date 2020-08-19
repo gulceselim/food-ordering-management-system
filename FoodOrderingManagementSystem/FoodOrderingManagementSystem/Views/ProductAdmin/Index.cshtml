@@ -21,7 +21,6 @@
                             <thead>
 
                                 <tr>
-                                    <th>Restaurant Name</th>
                                     <th>Image</th>
                                     <th>Product Name</th>
                                     <th>Category</th>
@@ -40,9 +39,8 @@
                                     if (restaurant.restaurant_id == product.restaurant_id)
                                     {
                                         <tr>
-                                            <td>@product.restaurant.restaurant_name</td>
                                             <td class="w-1">
-                                                <img src=@product.product_image class="img-fluid img-thumbnail" />
+                                                <img src="@product.product_image" class="img-fluid img-thumbnail" />
                                             </td>
                                             <td>@product.product_name</td>
                                             <td>@product.category.category_name</td>
@@ -61,8 +59,8 @@
 
 
                                             <td class="actions">
-                                                <a href="" class="btn btn-modern btn-rounded btn-success mb-2">Güncelle</a>
-                                                <a href="#" class="btn btn-modern btn-rounded btn btn-danger restSil" data-restid="">Sil</a>
+                                                <a href="/ProductAdmin/ProductUpdate/@product.product_id" class="btn btn-modern btn-rounded btn-success mb-2">Update</a>
+                                                <a href="#" class="btn btn-modern btn-rounded btn btn-danger prodDel" data-prodid="@product.product_id">Delete</a>
                                             </td>
                                         </tr>
                                     }
@@ -82,22 +80,22 @@
         <script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
 
         <script>
-            $(".restSil").click(function () {
+            $(".prodDel").click(function () {
                 var result = confirm("Kayıt Silinsin mi? ");
                 if (result) {
-                    var restID = $(this).data("restid");
+                    var prodID = $(this).data("prodid");
 
                     $.ajax(
                         {
                             type: "POST",
-                            url: "/RestaurantAdmin/RestaurantDelete/" + restID,
+                            url: "/ProductAdmin/ProductDelete/" + prodID,
                             success: function () {
                                 alert("Kayıt Silindi");
-                                window.location.replace("/RestaurantAdmin/Index");
+                                window.location.replace("/ProductAdmin/Index");
                             },
                             error: function () {
                                 alert("Hata oluştu");
-                                window.location.replace("/RestaurantAdmin/Index");
+                                window.location.replace("/ProductAdmin/Index");
 
                             }
                         });

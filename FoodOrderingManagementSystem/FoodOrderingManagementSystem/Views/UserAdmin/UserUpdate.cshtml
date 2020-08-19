@@ -6,7 +6,7 @@
 
 @using FoodOrderingManagementSystem.Models
 
-<ddiv class="row">
+<div class="row">
     <div class="col-md-8">
         <div class="card">
             <div class="card-header card-header-primary">
@@ -66,8 +66,13 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">City</label>
-                                <input value="" type="text" class="form-control" name="">
+                                <label class="">City</label>
+                                <select name="city_id">
+                                    @foreach (city cities in ViewBag.cities)
+                                    {
+                                        <option value="@cities.city_id">@cities.city_name</option>
+                                    }
+                                </select>
 
                             </div>
                         </div>
@@ -80,7 +85,7 @@
                         <div class="col-md-4">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Role</label>
-                                <input value="" type="text" class="form-control" disabled="" name="">
+                                <input value="@Model.role.role_name" type="text" class="form-control" disabled="" name="role_name">
 
                             </div>
                         </div>
@@ -91,4 +96,4 @@
             </div>
         </div>
     </div>
-   
+</div>

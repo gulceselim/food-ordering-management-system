@@ -38,12 +38,19 @@
                                     <td>@restaurants.restaurant_address</td>
                                     <td>@restaurants.phone_number</td>
                                     <td>@restaurants.rating</td>
-                                    <td>Deneme</td>
+                                    @foreach (var cities in ViewBag.cityList)
+                                    {
+                                        if(restaurants.restaurant_id == cities.restID)
+                                        {
+                                            <td>@cities.city</td>
+                                        }
+                                    }
+                                    
 
 
                                     <td class="actions">
-                                        <a href="/RestaurantAdmin/RestaurantUpdate/@restaurants.restaurant_id" class="btn btn-modern btn-rounded btn-success mb-2">Güncelle</a>
-                                        <a href="#" class="btn btn-modern btn-rounded btn btn-danger restSil" data-restid="@restaurants.restaurant_id">Sil</a>
+                                        <a href="/RestaurantAdmin/RestaurantUpdate/@restaurants.restaurant_id" class="btn btn-modern btn-rounded btn-success mb-2">Update</a>
+                                        <a href="#" class="btn btn-modern btn-rounded btn btn-danger restSil" data-restid="@restaurants.restaurant_id">Deltete</a>
                                     </td>
                                 </tr>
                             }

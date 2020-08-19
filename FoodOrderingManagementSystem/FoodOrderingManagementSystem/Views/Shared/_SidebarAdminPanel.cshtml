@@ -10,19 +10,19 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/RestaurantAdmin/Index">
                     <i class="material-icons">room_service</i>
-                    <p>Restaurant</p>
+                    <p>Restaurants</p>
                 </a>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" href="/UserAdmin/Index">
-                    <i class="material-icons">group</i>
+                    <i class="material-icons">person</i>
                     <p>Users Profile</p>
                 </a>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" href="/ProductAdmin/Index">
                     <i class="material-icons">group_work</i>
-                    <p>Product</p>
+                    <p>Products</p>
                 </a>
             </li>
             <li class="nav-item ">
@@ -32,40 +32,23 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="./icons.html">
-                    <i class="material-icons">bubble_chart</i>
-                    <p>Icons</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./map.html">
-                    <i class="material-icons">location_ons</i>
-                    <p>Maps</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./notifications.html">
-                    <i class="material-icons">notifications</i>
-                    <p>Notifications</p>
-                </a>
-            </li>
+            <a class="nav-link" href="/RoleAdmin/Index">
+                <i class="material-icons">group</i>
+                <p>Roles</p>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="./map.html">
+                <i class="material-icons">location_ons</i>
+                <p>Maps</p>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="./notifications.html">
+                <i class="material-icons">notifications</i>
+                <p>Notifications</p>
+            </a>
+        </li>
         </ul>
     </div>
 </div>
-
-@section active{
-    <script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $('.nav li a').click(function (e) {
-                alert("sdadsad");
-                $('.nav li.active').removeClass('active');
-
-                var $parent = $(this).parent();
-                $parent.addClass('active');
-                e.preventDefault();
-            });
-        });
-    </script>
-}

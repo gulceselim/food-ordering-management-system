@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Role Update";
+}
+
+@using FoodOrderingManagementSystem.Models
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Edit Profile</h4>
+                <p class="card-category">Complete your profile</p>
+            </div>
+            <label> </label>
+            <label> </label>
+            <label> </label>
+            <label> </label>
+            <div class="card-body">
+                <form action="/RoleAdmin/RoleUpdate" method="post" role="form">
+                    <input type="hidden" name="role_id" value="@Model.role_id" />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+
+                                <label class="bmd-label-floating">Role Name</label>
+                                <input value="@Model.role_name" type="text" class="form-control" name="role_name">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">Update Role</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
