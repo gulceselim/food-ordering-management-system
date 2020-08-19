@@ -15,6 +15,7 @@ namespace FoodOrderingManagementSystem.Controllers
         public ActionResult Index()
         {
             List<shipper> shippers = models.shippers.ToList();
+            ViewBag.restaurants = models.restaurants.ToList();
             return View(shippers);
         }
     }
