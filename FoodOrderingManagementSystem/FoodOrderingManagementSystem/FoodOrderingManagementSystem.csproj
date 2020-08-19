@@ -6448,6 +6448,19 @@
     <Content Include="Views\UserAdmin\UserUpdate.cshtml" />
     <Content Include="Views\ProductAdmin\_viewstart.cshtml" />
     <Content Include="Views\ProductAdmin\Index.cshtml" />
+    <Content Include="Views\CategoryAdmin\Index.cshtml" />
+    <Content Include="Views\CategoryAdmin\_viewstart.cshtml" />
+    <Content Include="Views\CategoryAdmin\CategoryUpdate.cshtml" />
+    <Content Include="Views\CategoryAdmin\CategoryAdd.cshtml" />
+    <Content Include="Views\ProductAdmin\ProductUpdate.cshtml" />
+    <Content Include="Views\RoleAdmin\Index.cshtml" />
+    <Content Include="Views\RoleAdmin\_viewstart.cshtml" />
+    <Content Include="Views\RoleAdmin\RoleUpdate.cshtml" />
+    <Content Include="Views\RoleAdmin\RoleAdd.cshtml" />
+    <Content Include="Views\ShipperAdmin\Index.cshtml" />
+    <Content Include="Views\ShipperAdmin\_viewstart.cshtml" />
+    <Content Include="Views\OrderAdmin\_viewstart.cshtml" />
+    <Content Include="Views\CommentAdmin\_viewstart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6457,11 +6470,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CategoryAdmin\" />
-    <Folder Include="Views\CommentAdmin\" />
-    <Folder Include="Views\OrderAdmin\" />
-    <Folder Include="Views\RoleAdmin\" />
-    <Folder Include="Views\ShipperAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

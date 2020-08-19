@@ -53,7 +53,7 @@ namespace FoodOrderingManagementSystem.Models
 
         public int city_id { get; set; }
 
-        public int payment_id { get; set; }
+        public int? payment_id { get; set; }
 
         public virtual city city { get; set; }
 

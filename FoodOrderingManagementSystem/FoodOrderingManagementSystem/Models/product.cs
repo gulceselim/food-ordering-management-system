@@ -22,7 +22,6 @@ namespace FoodOrderingManagementSystem.Models
         public string product_name { get; set; }
 
         [Required]
-        [StringLength(50)]
         public string details { get; set; }
 
         [Required]
@@ -31,8 +30,7 @@ namespace FoodOrderingManagementSystem.Models
 
         public bool active { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [StringLength(200)]
         public string product_image { get; set; }
 
         public int category_id { get; set; }

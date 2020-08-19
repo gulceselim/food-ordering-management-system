@@ -93,11 +93,6 @@ namespace FoodOrderingManagementSystem.Models
                 .Property(e => e.card_cvv)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<payment>()
-                .HasMany(e => e.users)
-                .WithRequired(e => e.payment)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<product>()
                 .Property(e => e.product_name)
                 .IsUnicode(false);

@@ -14,7 +14,6 @@ namespace FoodOrderingManagementSystem.Models
         public DateTime comment_time { get; set; }
 
         [Required]
-        [StringLength(50)]
         public string comment_text { get; set; }
 
         public int users_id { get; set; }

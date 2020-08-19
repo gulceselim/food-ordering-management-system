@@ -23,7 +23,6 @@ namespace FoodOrderingManagementSystem.Models
         public string order_type { get; set; }
 
         [Required]
-        [StringLength(50)]
         public string order_details { get; set; }
 
         [Required]

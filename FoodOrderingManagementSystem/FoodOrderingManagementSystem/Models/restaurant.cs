@@ -25,7 +25,6 @@ namespace FoodOrderingManagementSystem.Models
         public string restaurant_name { get; set; }
 
         [Required]
-        [StringLength(50)]
         public string restaurant_address { get; set; }
 
         [Required]
