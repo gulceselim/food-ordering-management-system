@@ -2,6 +2,58 @@
 @{
     ViewBag.Title = "Shippers";
 }
+@using FoodOrderingManagementSystem.Models
 
-<h2>Index</h2>
+@using FoodOrderingManagementSystem.Models
+@model List<shipper>
+
+@foreach (restaurant restaurant in ViewBag.restaurants)
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">
+                        @restaurant.restaurant_name
+                    </h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Identification Number</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (shipper shippers in Model)
+                                {
+                                    if (restaurant.restaurant_id == shippers.restaurant_id)
+                                    {
+                                    <tr>
+                                        <td>@shippers.first_name</td>
+                                        <td>@shippers.last_name</td>
+                                        <td>@shippers.identification_number</td>
+
+                                        <td class="actions">
+                                            <a href="#" class="btn btn-modern btn-rounded btn btn-danger shipperDel" data-shipperid="@shippers.shipper_id">Delete</a>
+                                        </td>
+                                    </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
 
