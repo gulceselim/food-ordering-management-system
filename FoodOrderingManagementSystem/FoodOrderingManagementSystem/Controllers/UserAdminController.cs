@@ -22,6 +22,8 @@ namespace FoodOrderingManagementSystem.Controllers
         {
             user user = models.users.FirstOrDefault(x => x.users_id == id);
 
+            ViewBag.cities = models.cities.ToList();
+
             return View(user);
         }
 
@@ -36,6 +38,7 @@ namespace FoodOrderingManagementSystem.Controllers
             user.user_email = u.user_email;
             user.username = u.username;
             user.phone_number = u.phone_number;
+            user.city_id = u.city_id;
             models.SaveChanges();
             return RedirectToAction("Index");
         }
