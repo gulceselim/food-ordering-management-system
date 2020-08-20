@@ -6,6 +6,17 @@
 @using FoodOrderingManagementSystem.Models
 @model List<product>
 
+@section search{
+    @using (Html.BeginForm())
+    {
+        @Html.Editor("words");
+        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <i class="material-icons">search</i>
+            <div class="ripple-container"></div>
+        </button>
+    }
+}
+
 @foreach (restaurant restaurant in ViewBag.restaurant)
 {
     <div class="row">
@@ -30,7 +41,7 @@
                                     <th>Actions</th>
 
                                 </tr>
-                               
+
                             </thead>
                             <tbody>
 
@@ -75,37 +86,37 @@
         </div>
     </div>
 }
-    @section scripts{
+@section scripts{
 
-        <script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
+    <script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
 
-        <script>
-            $(".prodDel").click(function () {
-                var result = confirm("Kayıt Silinsin mi? ");
-                if (result) {
-                    var prodID = $(this).data("prodid");
+    <script>
+        $(".prodDel").click(function () {
+            var result = confirm("Kayıt Silinsin mi? ");
+            if (result) {
+                var prodID = $(this).data("prodid");
 
-                    $.ajax(
-                        {
-                            type: "POST",
-                            url: "/ProductAdmin/ProductDelete/" + prodID,
-                            success: function () {
-                                alert("Kayıt Silindi");
-                                window.location.replace("/ProductAdmin/Index");
-                            },
-                            error: function () {
-                                alert("Hata oluştu");
-                                window.location.replace("/ProductAdmin/Index");
+                $.ajax(
+                    {
+                        type: "POST",
+                        url: "/ProductAdmin/ProductDelete/" + prodID,
+                        success: function () {
+                            alert("Kayıt Silindi");
+                            window.location.replace("/ProductAdmin/Index");
+                        },
+                        error: function () {
+                            alert("Hata oluştu");
+                            window.location.replace("/ProductAdmin/Index");
 
-                            }
-                        });
-                }
-                else {
-                    alert("iptal");
-                }
+                        }
+                    });
+            }
+            else {
+                alert("iptal");
+            }
 
-            });
+        });
 
 
-        </script>
-    }
+    </script>
+}

@@ -6,6 +6,16 @@
 @using FoodOrderingManagementSystem.Models
 @model List<category>
 
+@section search{
+    @using (Html.BeginForm())
+    {
+        @Html.Editor("words");
+        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+            <i class="material-icons">search</i>
+            <div class="ripple-container"></div>
+        </button>
+    }
+}
 
 <div class="row">
     <div class="col-md-12">

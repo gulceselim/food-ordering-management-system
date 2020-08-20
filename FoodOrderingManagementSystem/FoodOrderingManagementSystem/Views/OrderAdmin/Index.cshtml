@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "Orders";
+}
+
+@using FoodOrderingManagementSystem.ViewModels
+@model List<OrderVM>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Restaurant</h4>
+                <p class="card-category"></p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>User Name</th>
+                                <th>Product Name</th>
+                                <th>Order Type</th>
+                                <th>Price</th>
+                                <th>Shipper Name</th>
+                                <th>Details</th>
+                                <th>Actions</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var order in Model)
+                            {
+                                <tr>
+                                    <td>@order.user_name</td>
+                                    <td>@order.product_name</td>
+                                    <td>@order.order_type</td>
+                                    <td>@order.price</td>
+                                    <td>@order.shipper_name</td>
+                                    <td>@order.order_details</td>
+
+                                    <td class="actions">
+                                        <a href="/RestaurantAdmin/RestaurantUpdate/@order.order_id" class="btn btn-modern btn-rounded btn-success mb-2">Update</a>
+                                        <a href="#" class="btn btn-modern btn-rounded btn btn-danger restSil" data-restid="@order.order_id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
