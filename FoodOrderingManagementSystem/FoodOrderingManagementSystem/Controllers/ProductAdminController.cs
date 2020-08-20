@@ -11,12 +11,10 @@ namespace FoodOrderingManagementSystem.Controllers
     {
         FoodOrderingMSModel models = new FoodOrderingMSModel();
         // GET: ProductAdmin
-        public ActionResult Index()
+        public ActionResult Index(string words)
         {
-            List<product> products = models.products.ToList();
-
             ViewBag.restaurant = models.restaurants.ToList();
-            return View(products);
+            return View(models.products.Where(x => x.product_name.Contains(words) || words == null).ToList());
         }
 
         public ActionResult ProductUpdate(int id)
