@@ -6427,6 +6427,8 @@
     <Compile Include="Models\shipper.cs" />
     <Compile Include="Models\user.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\OrderVM.cs" />
+    <Compile Include="ViewModels\RestaurantVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -6461,6 +6463,7 @@
     <Content Include="Views\ShipperAdmin\_viewstart.cshtml" />
     <Content Include="Views\OrderAdmin\_viewstart.cshtml" />
     <Content Include="Views\CommentAdmin\_viewstart.cshtml" />
+    <Content Include="Views\OrderAdmin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
