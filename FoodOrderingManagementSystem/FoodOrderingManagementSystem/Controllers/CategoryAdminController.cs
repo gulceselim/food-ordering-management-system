@@ -11,10 +11,10 @@ namespace FoodOrderingManagementSystem.Controllers
     {
         FoodOrderingMSModel models = new FoodOrderingMSModel();
         // GET: CategoryAdmin
-        public ActionResult Index(string words)
+        public ActionResult Index()
         {
-
-            return View(models.categories.Where(x => x.category_name.Contains(words) || words == null).ToList());
+            List<category> categories = models.categories.ToList();
+            return View(categories);
 
         }
         public ActionResult CategoryUpdate(int id)
@@ -46,8 +46,7 @@ namespace FoodOrderingManagementSystem.Controllers
 
         public ActionResult CategoryAdd()
         {
-            List<category> categories = models.categories.ToList();
-            return View(categories);
+            return View();
         }
         [HttpPost]
         public ActionResult CategoryAdd(category c)
