@@ -61,7 +61,8 @@
                     <div class="collapse navbar-collapse justify-content-end">
                         <form class="navbar-form">
                             <div class="input-group no-border">
-                                @RenderSection("search", false)
+                                <span class="input-group-addon"><i class="material-icons">search</i></span>
+                                <input type="text" class="form-control" id="Search" placeholder="Search...">
                             </div>
                         </form>
                         <ul class="navbar-nav">
@@ -94,7 +95,6 @@
     </div>
     @Html.Partial("_ScriptAdminPanel")
     @RenderSection("scripts", false)
-
 
 
 </body>

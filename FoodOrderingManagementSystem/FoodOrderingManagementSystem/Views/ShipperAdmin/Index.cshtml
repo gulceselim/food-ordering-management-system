@@ -10,7 +10,7 @@
 @foreach (restaurant restaurant in ViewBag.restaurants)
 {
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 Search">
             <div class="card">
                 <div class="card-header card-header-primary">
                     <h4 class="card-title ">
@@ -35,15 +35,16 @@
                                 {
                                     if (restaurant.restaurant_id == shippers.restaurant_id)
                                     {
-                                    <tr>
-                                        <td>@shippers.first_name</td>
-                                        <td>@shippers.last_name</td>
-                                        <td>@shippers.identification_number</td>
+                                        <tr class="Search">
+                                            <td>@shippers.first_name</td>
+                                            <td>@shippers.last_name</td>
+                                            <td>@shippers.identification_number</td>
 
-                                        <td class="actions">
-                                            <a href="#" class="btn btn-modern btn-rounded btn btn-danger shipperDel" data-shipperid="@shippers.shipper_id">Delete</a>
-                                        </td>
-                                    </tr>
+                                            <td class="actions">
+                                                <a href="/ShipperAdmin/ShipperUpdate/@shippers.shipper_id" class="btn btn-modern btn-rounded btn-success mb-2">Update</a>
+                                                <a href="#" class="btn btn-modern btn-rounded btn btn-danger shipperDel" data-shipperid="@shippers.shipper_id">Delete</a>
+                                            </td>
+                                        </tr>
                                     }
                                 }
 
@@ -56,4 +57,64 @@
     </div>
 }
 
+
+@section scripts{
+
+
+    <script>
+        $(".shipperDel").click(function () {
+            swal("Are you sure you want to do this?", {
+                buttons: ["No", "Yes"],
+            }).then((result) => {
+                if (result) {
+                    var shipperID = $(this).data("shipperid");
+
+                    $.ajax(
+                        {
+                            type: "POST",
+                            url: "/ShipperAdmin/ShipperDelete/" + shipperID,
+                            success: function () {
+                                swal({
+                                    title: "İtem Deleted!",
+                                    text: "You clicked the button!",
+                                    icon: "success",
+                                    button: "OK",
+                                }).then(() => {
+                                    window.location.replace("/ShipperAdmin/Index");
+                                });
+                            },
+                            error: function () {
+                                swal("Your imaginary file is safe!");
+                            }
+                        });
+                }
+                else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
+        });
+
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+            $("#Search").keyup(function () {
+                var searchText = $("#Search").val();
+                $(".Search").each(function () {
+                    if (!Contains($(this).text(), searchText)) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                });
+            });
+        });
+    </script>
+}
 

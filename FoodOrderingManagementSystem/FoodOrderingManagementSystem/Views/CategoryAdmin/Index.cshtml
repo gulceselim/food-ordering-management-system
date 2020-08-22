@@ -6,19 +6,8 @@
 @using FoodOrderingManagementSystem.Models
 @model List<category>
 
-@section search{
-    @using (Html.BeginForm())
-    {
-        @Html.Editor("words");
-        <button type="submit" class="btn btn-white btn-round btn-just-icon">
-            <i class="material-icons">search</i>
-            <div class="ripple-container"></div>
-        </button>
-    }
-}
-
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 Search">
         <div class="card">
             <div class="card-header card-header-primary">
                 <h4 class="card-title ">
@@ -44,7 +33,7 @@
 
                             @foreach (var categories in Model)
                             {
-                                <tr>
+                                <tr class="Search">
                                     <td>@categories.category_name</td>
 
                                     <td class="actions">
@@ -62,38 +51,67 @@
     </div>
 </div>
 
+
+
+
 @section scripts{
 
-    <script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
 
     <script>
         $(".catDel").click(function () {
-            var result = confirm("Kayıt Silinsin mi? ");
-            if (result) {
-                var catID = $(this).data("catid");
+            swal("Are you sure you want to do this?", {
+                buttons: ["No", "Yes"],
+            }).then((result) => {
+                if (result) {
+                    var catID = $(this).data("catid");
 
-                $.ajax(
-                    {
-                        type: "POST",
-                        url: "/CategoryAdmin/CategoryDelete/" + catID,
-                        success: function () {
-                            alert("Kayıt Silindi");
-                            window.location.replace("/CategoryAdmin/Index");
-                        },
-                        error: function () {
-                            alert("Hata oluştu");
-                            window.location.replace("/CategoryAdmin/Index");
-
-                        }
-                    });
-            }
-            else {
-                alert("iptal");
-            }
-
+                    $.ajax(
+                        {
+                            type: "POST",
+                            url: "/CategoryAdmin/CategoryDelete/" + catID,
+                            success: function () {
+                                swal({
+                                    title: "İtem Deleted!",
+                                    text: "You clicked the button!",
+                                    icon: "success",
+                                    button: "OK",
+                                }).then(() => {
+                                    window.location.replace("/CategoryAdmin/Index");
+                                });
+                            },
+                            error: function () {
+                                swal("Your imaginary file is safe!");
+                            }
+                        });
+                }
+                else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
         });
 
 
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+            $("#Search").keyup(function () {
+                var searchText = $("#Search").val();
+                $(".Search").each(function () {
+                    if (!Contains($(this).text(), searchText)) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                });
+            });
+        });
     </script>
 }
 

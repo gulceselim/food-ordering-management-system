@@ -5,7 +5,7 @@
 @model List<user>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 Search">
         <div class="card">
             <div class="card-header card-header-primary">
                 <h4 class="card-title ">User</h4>
@@ -32,7 +32,7 @@
 
                             @foreach (user user in Model)
                             {
-                                <tr>
+                                <tr class="Search">
                                     <td>@user.first_name</td>
                                     <td>@user.last_name</td>
                                     <td>@user.username</td>
@@ -57,38 +57,65 @@
     </div>
 </div>
 
+
+
 @section scripts{
 
-    <script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
 
     <script>
         $(".userSil").click(function () {
-            var result = confirm("Kayıt Silinsin mi? ");
-            if (result) {
-                var userID = $(this).data("userid");
+            swal("Are you sure you want to do this?", {
+                buttons: ["No", "Yes"],
+            }).then((result) => {
+                if (result) {
+                    var userID = $(this).data("userid");
 
-                $.ajax(
-                    {
-                        type: "POST",
-                        url: "/UserAdmin/UserDelete/" + userID,
-                        success: function () {
-                            alert("Kayıt Silindi");
-                            window.location.replace("/UserAdmin/Index");
-                        },
-                        error: function () {
-                            alert("Hata oluştu");
-                            window.location.replace("/UserAdmin/Index");
-
-                        }
-                    });
-            }
-            else {
-                alert("iptal");
-            }
-
+                    $.ajax(
+                        {
+                            type: "POST",
+                            url: "/UserAdmin/UserDelete/" + userID,
+                            success: function () {
+                                swal({
+                                    title: "İtem Deleted!",
+                                    text: "You clicked the button!",
+                                    icon: "success",
+                                    button: "OK",
+                                }).then(() => {
+                                    window.location.replace("/UserAdmin/Index");
+                                });
+                            },
+                            error: function () {
+                                swal("Your imaginary file is safe!");
+                            }
+                        });
+                }
+                else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
         });
 
+    </script>
 
+
+    <script>
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+            $("#Search").keyup(function () {
+                var searchText = $("#Search").val();
+                $(".Search").each(function () {
+                    if (!Contains($(this).text(), searchText)) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                });
+            });
+        });
     </script>
 }
 

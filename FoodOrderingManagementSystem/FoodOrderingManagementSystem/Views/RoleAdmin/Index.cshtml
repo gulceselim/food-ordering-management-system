@@ -8,7 +8,7 @@
 
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 Search">
         <div class="card">
             <div class="card-header card-header-primary">
                 <h4 class="card-title ">
@@ -34,7 +34,7 @@
 
                             @foreach (var roles in Model)
                             {
-                                <tr>
+                                <tr class="Search">
                                     <td>@roles.role_name</td>
 
                                     <td class="actions">
@@ -52,39 +52,69 @@
     </div>
 </div>
 
+
+<script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val();
+            $(".Search").each(function () {
+                if (!Contains($(this).text(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>
+
 @section scripts{
 
     <script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
         $(".roleDel").click(function () {
-            var result = confirm("Kayıt Silinsin mi? ");
-            if (result) {
-                var roleID = $(this).data("roleid");
+            swal("Are you sure you want to do this?", {
+                buttons: ["No", "Yes"],
+            }).then((result) => {
+                if (result) {
+                    var roleID = $(this).data("roleid");
 
-                $.ajax(
-                    {
-                        type: "POST",
-                        url: "/RoleAdmin/RoleDelete/" + roleID,
-                        success: function () {
-                            alert("Kayıt Silindi");
-                            window.location.replace("/RoleAdmin/Index");
-                        },
-                        error: function () {
-                            alert("Hata oluştu");
-                            window.location.replace("/RoleAdmin/Index");
-
-                        }
-                    });
-            }
-            else {
-                alert("iptal");
-            }
-
+                    $.ajax(
+                        {
+                            type: "POST",
+                            url: "/RoleAdmin/RoleDelete/" + roleID,
+                            success: function () {
+                                swal({
+                                    title: "İtem Deleted!",
+                                    text: "You clicked the button!",
+                                    icon: "success",
+                                    button: "OK",
+                                }).then(() => {
+                                    window.location.replace("/RoleAdmin/Index");
+                                });
+                            },
+                            error: function () {
+                                swal("Your imaginary file is safe!");
+                            }
+                        });
+                }
+                else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
         });
 
-
     </script>
+
 }
 
 

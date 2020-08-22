@@ -1,0 +1,17 @@
+﻿
+@{
+
+    string CurrentControllerName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"]);
+
+    if(CurrentControllerName[CurrentControllerName.Length-1] == 'n')
+    {
+        Layout = "~/Views/Shared/_LayoutAdminPanel.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_LayoutUserPanel.cshtml";
+
+    }
+}
+
+
