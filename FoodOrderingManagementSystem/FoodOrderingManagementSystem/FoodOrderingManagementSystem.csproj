@@ -6402,6 +6402,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoryAdminController.cs" />
     <Compile Include="Controllers\CommentAdminController.cs" />
+    <Compile Include="Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\OrderAdminController.cs" />
     <Compile Include="Controllers\ProductAdminController.cs" />
     <Compile Include="Controllers\RestaurantAdminController.cs" />
@@ -6441,17 +6442,12 @@
     <Content Include="Views\RestaurantAdmin\Index.cshtml" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-    <Content Include="Views\RestaurantAdmin\_viewstart.cshtml" />
-    <Content Include="Views\RestaurantUser\_viewstart.cshtml" />
     <Content Include="Views\RestaurantUser\Index.cshtml" />
     <Content Include="Views\RestaurantAdmin\RestaurantUpdate.cshtml" />
     <Content Include="Views\UserAdmin\Index.cshtml" />
-    <Content Include="Views\UserAdmin\_viewstart.cshtml" />
     <Content Include="Views\UserAdmin\UserUpdate.cshtml" />
-    <Content Include="Views\ProductAdmin\_viewstart.cshtml" />
     <Content Include="Views\ProductAdmin\Index.cshtml" />
     <Content Include="Views\CategoryAdmin\Index.cshtml" />
-    <Content Include="Views\CategoryAdmin\_viewstart.cshtml" />
     <Content Include="Views\CategoryAdmin\CategoryUpdate.cshtml" />
     <Content Include="Views\CategoryAdmin\CategoryAdd.cshtml" />
     <Content Include="Views\ProductAdmin\ProductUpdate.cshtml" />
@@ -6460,10 +6456,11 @@
     <Content Include="Views\RoleAdmin\RoleUpdate.cshtml" />
     <Content Include="Views\RoleAdmin\RoleAdd.cshtml" />
     <Content Include="Views\ShipperAdmin\Index.cshtml" />
-    <Content Include="Views\ShipperAdmin\_viewstart.cshtml" />
-    <Content Include="Views\OrderAdmin\_viewstart.cshtml" />
-    <Content Include="Views\CommentAdmin\_viewstart.cshtml" />
     <Content Include="Views\OrderAdmin\Index.cshtml" />
+    <Content Include="Views\_viewstart.cshtml" />
+    <Content Include="Views\HomeAdmin\Index.cshtml" />
+    <Content Include="Views\ShipperAdmin\ShipperAdd.cshtml" />
+    <Content Include="Views\ShipperAdmin\ShipperUpdate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6473,6 +6470,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\CommentAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
