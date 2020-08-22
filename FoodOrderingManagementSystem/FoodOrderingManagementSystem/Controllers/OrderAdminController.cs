@@ -49,6 +49,8 @@ namespace FoodOrderingManagementSystem.Controllers
                 orderVMList.Add(order);
             }
 
+            ViewBag.count = orderVMList.Count;
+
             return View(orderVMList);
         }
 
