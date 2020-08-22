@@ -35,7 +35,6 @@ namespace FoodOrderingManagementSystem.ViewModels
         public string city_name { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string city_zip_code { get; set; }
+        public int city_zip_code { get; set; }
     }
 }
