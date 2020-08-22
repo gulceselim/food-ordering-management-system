@@ -35,30 +35,28 @@ namespace FoodOrderingManagementSystem.Controllers
                                       restaurant.rating
                                   }).ToList();
 
+
             foreach (var item in restaurantList)
             {
                 RestaurantVM restaurant = new RestaurantVM();
                 restaurant.restaurant_id = item.restaurant_id;
                 restaurant.restaurant_name = item.restaurant_name;
                 restaurant.city_name = item.city_name;
-                restaurant.city_zip_code = item.city_id.ToString();
+                restaurant.city_zip_code = item.city_id;
                 restaurant.username = item.username;
                 restaurant.restaurant_address = item.restaurant_address;
                 restaurant.phone_number = item.phone_number;
                 restaurant.rating = item.rating;
                 restaurantVMList.Add(restaurant);
             }
-            
+
+
             return View(restaurantVMList);
         }
 
         public ActionResult RestaurantUpdate(int id)
         {
             restaurant rest = models.restaurants.FirstOrDefault(x => x.restaurant_id == id);
-            ViewBag.cities = models.cities.ToList();
-
-
-
             return View(rest);
         }
 
@@ -88,6 +86,6 @@ namespace FoodOrderingManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
-       
+
     }
 }
