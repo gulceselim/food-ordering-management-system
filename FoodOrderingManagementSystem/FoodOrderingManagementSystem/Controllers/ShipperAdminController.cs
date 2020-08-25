@@ -36,9 +36,10 @@ namespace FoodOrderingManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult ShipperAdd()
+        public ActionResult ShipperAdd(int id)
         {
-            return View();
+            restaurant restaurant = models.restaurants.FirstOrDefault(x => x.restaurant_id == id);
+            return View(restaurant);
         }
         [HttpPost]
         public ActionResult ShipperAdd(shipper s)

@@ -52,5 +52,19 @@ namespace FoodOrderingManagementSystem.Controllers
             return RedirectToAction("Index");
 
         }
+
+        public ActionResult ProductAdd(int id)
+        {
+            restaurant restaurant = models.restaurants.FirstOrDefault(x => x.restaurant_id == id);
+            ViewBag.categories = models.categories.ToList();
+            return View(restaurant);
+        }
+        [HttpPost]
+        public ActionResult ProductAdd(product p)
+        {
+            models.products.Add(p);
+            models.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
