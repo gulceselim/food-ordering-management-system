@@ -25,6 +25,8 @@ namespace FoodOrderingManagementSystem.Models
         public virtual DbSet<role> roles { get; set; }
         public virtual DbSet<shipper> shippers { get; set; }
         public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<OrderProduct> OrderProducts { get; set; }
+        public virtual DbSet<RestaurantCity> RestaurantCities { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -103,10 +105,6 @@ namespace FoodOrderingManagementSystem.Models
 
             modelBuilder.Entity<product>()
                 .Property(e => e.price)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<product>()
-                .Property(e => e.product_image)
                 .IsUnicode(false);
 
             modelBuilder.Entity<product>()
@@ -222,6 +220,62 @@ namespace FoodOrderingManagementSystem.Models
                 .HasMany(e => e.orders)
                 .WithRequired(e => e.user)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<OrderProduct>()
+                .Property(e => e.order_type)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<OrderProduct>()
+                .Property(e => e.price)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<OrderProduct>()
+                .Property(e => e.order_details)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<OrderProduct>()
+                .Property(e => e.product_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<OrderProduct>()
+                .Property(e => e.first_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<OrderProduct>()
+                .Property(e => e.last_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<OrderProduct>()
+                .Property(e => e.uFirstName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<OrderProduct>()
+                .Property(e => e.uLastName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<OrderProduct>()
+                .Property(e => e.restaurant_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<RestaurantCity>()
+                .Property(e => e.restaurant_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<RestaurantCity>()
+                .Property(e => e.username)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<RestaurantCity>()
+                .Property(e => e.restaurant_address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<RestaurantCity>()
+                .Property(e => e.city_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<RestaurantCity>()
+                .Property(e => e.phone_number)
+                .IsUnicode(false);
         }
     }
 }

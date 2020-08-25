@@ -29,8 +29,6 @@ namespace FoodOrderingManagementSystem.Models
         [StringLength(50)]
         public string price { get; set; }
 
-        public DateTime? order_time { get; set; }
-
         public int users_id { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

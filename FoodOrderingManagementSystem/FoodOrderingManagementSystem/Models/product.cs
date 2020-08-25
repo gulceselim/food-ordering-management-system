@@ -30,9 +30,6 @@ namespace FoodOrderingManagementSystem.Models
 
         public bool active { get; set; }
 
-        [StringLength(200)]
-        public string product_image { get; set; }
-
         public int category_id { get; set; }
 
         public int restaurant_id { get; set; }

@@ -43,8 +43,6 @@ namespace FoodOrderingManagementSystem.Models
 
         public int role_id { get; set; }
 
-        public DateTime? order_time_planned { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<city_restaurant> city_restaurant { get; set; }
 
