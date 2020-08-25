@@ -1,13 +1,13 @@
 ﻿
 @{
     ViewBag.Title = "Restaurants";
+    string city = "";
 }
-@using FoodOrderingManagementSystem.ViewModels
-@model List<RestaurantVM>
-
+@using FoodOrderingManagementSystem.Models
+@model List<RestaurantCity>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 Search">
         <div class="card">
             <div class="card-header card-header-primary">
                 <h4 class="card-title ">Restaurants</h4>
@@ -29,7 +29,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             @foreach (var restaurants in Model)
                             {
                                 <tr class="Search">
@@ -38,16 +37,28 @@
                                     <td>@restaurants.restaurant_address</td>
                                     <td>@restaurants.phone_number</td>
                                     <td>@restaurants.rating</td>
-                                    <td>@restaurants.city_name</td>
 
+                                    @foreach (var restaurant in Model)
+                                    {
+                                        if(restaurant.restaurant_name == restaurants.restaurant_name)
+                                        {
+                                            city += restaurant.city_name + " ";
+                                        }
+                                    }
+                                    <td>@city</td>
+                                    @{ 
+                                        city = "";
+                                    }
+                                   
 
                                     <td class="actions">
                                         <a href="/RestaurantAdmin/RestaurantUpdate/@restaurants.restaurant_id" class="btn btn-modern btn-rounded btn-success mb-2">Update</a>
                                         <a href="#" class="btn btn-modern btn-rounded btn btn-danger restSil" data-restid="@restaurants.restaurant_id">Delete</a>
                                     </td>
                                 </tr>
+                                
                             }
-
+                               
                         </tbody>
                     </table>
                 </div>
@@ -56,33 +67,8 @@
     </div>
 </div>
 
-
-<script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
-
-<script>
-    $(document).ready(function () {
-        function Contains(text_one, text_two) {
-            if (text_one.indexOf(text_two) != -1)
-                return true;
-        }
-        $("#Search").keyup(function () {
-            var searchText = $("#Search").val();
-            $(".Search").each(function () {
-                if (!Contains($(this).text(), searchText)) {
-                    $(this).hide();
-                }
-                else {
-                    $(this).show();
-                }
-            });
-        });
-    });
-</script>
-
 @section scripts{
 
-    <script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <script>
         $(".restSil").click(function () {
@@ -118,4 +104,26 @@
         });
 
     </script>
+
+
+    <script>
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+            $("#Search").keyup(function () {
+                var searchText = $("#Search").val();
+                $(".Search").each(function () {
+                    if (!Contains($(this).text(), searchText)) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                });
+            });
+        });
+    </script>
+
 }

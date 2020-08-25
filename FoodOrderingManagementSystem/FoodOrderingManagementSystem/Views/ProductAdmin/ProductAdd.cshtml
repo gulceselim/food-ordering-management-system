@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Product Add";
+}
+
+
+@using FoodOrderingManagementSystem.Models
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Edit Profile</h4>
+                <p class="card-category">Complete your profile</p>
+            </div>
+            <label> </label>
+            <label> </label>
+            <label> </label>
+            <label> </label>
+            <div class="card-body">
+                <form action="/ProductAdmin/ProductAdd" method="post" role="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Product Name</label>
+                                <input type="text" class="form-control" name="product_name">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Price</label>
+                                <input type="text" class="form-control" name="price">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Details</label>
+                                <input type="text" class="form-control" name="details">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="">Active</label>
+                            <select name="active">
+                                <option>True</option>
+                                <option>False</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label>Restaurant</label>
+                                <select name="restaurant_id">
+                                    <option value="@Model.restaurant_id">@Model.restaurant_name</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label class="">Category</label>
+                                <select name="category_id">
+                                    @foreach (category categories in ViewBag.categories)
+                                    {
+                                        <option value="@categories.category_id">@categories.category_name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">Add Product</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

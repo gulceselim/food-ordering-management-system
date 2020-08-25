@@ -1,13 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "Products";
+    ViewBag.Title = "Comments";
 }
 
+
 @using FoodOrderingManagementSystem.Models
-@model IEnumerable<FoodOrderingManagementSystem.Models.product>
+@model List<comment>
 
-
-@foreach (restaurant restaurant in ViewBag.restaurant)
+@foreach (restaurant restaurant in ViewBag.restaurants)
 {
     <div class="row">
         <div class="col-md-12 Search">
@@ -15,10 +15,6 @@
                 <div class="card-header card-header-primary">
                     <h4 class="card-title ">
                         @restaurant.restaurant_name
-                        <label></label>
-                        <label></label>
-                        <label></label>
-                        <a href="/ProductAdmin/ProductAdd/@restaurant.restaurant_id" class="btn btn-primary" accesskey="">Add<i class="material-icons">add</i></a>
                     </h4>
                     <p class="card-category"></p>
                 </div>
@@ -28,41 +24,27 @@
                             <thead>
 
                                 <tr>
-                                    <th>Product Name</th>
-                                    <th>Category</th>
-                                    <th>Price</th>
-                                    <th>Detail</th>
-                                    <th>Active</th>
+                                    <th>Comment Text</th>
+                                    <th>User Name</th>
+                                    <th>Comment Time</th>
                                     <th>Actions</th>
+
                                 </tr>
 
                             </thead>
                             <tbody>
 
-                                @foreach (var product in Model)
+                                @foreach (var comment in Model)
                                 {
-                                    if (restaurant.restaurant_id == product.restaurant_id)
+                                    if (restaurant.restaurant_id == comment.restaurant_id)
                                     {
                                         <tr class="Search">
-                                            <td>@product.product_name</td>
-                                            <td>@product.category.category_name</td>
-                                            <td>@product.price</td>
-                                            <td>@product.details</td>
-                                            <td>
-                                                @if (product.active == true)
-                                                {
-                                                    <button class="btn btn-success">Active</button>
-                                                }
-                                                else
-                                                {
-                                                    <button class="btn btn-danger">Passive</button>
-                                                }
-                                            </td>
-
+                                            <td>@comment.comment_text</td>
+                                            <td>@comment.user.first_name @comment.user.last_name</td>
+                                            <td>@comment.comment_time</td>
 
                                             <td class="actions">
-                                                <a href="/ProductAdmin/ProductUpdate/@product.product_id" class="btn btn-modern btn-rounded btn-success mb-2">Update</a>
-                                                <a href="#" class="btn btn-modern btn-rounded btn btn-danger prodDel" data-prodid="@product.product_id">Delete</a>
+                                                <a href="#" class="btn btn-modern btn-rounded btn btn-danger comDel" data-comid="@comment.comment_id">Delete</a>
                                             </td>
                                         </tr>
                                     }
@@ -82,21 +64,20 @@
 
 
 
-
 @section scripts{
 
     <script>
-        $(".prodDel").click(function () {
+        $(".comDel").click(function () {
             swal("Are you sure you want to do this?", {
                 buttons: ["No", "Yes"],
             }).then((result) => {
                 if (result) {
-                    var prodID = $(this).data("prodid");
+                    var comID = $(this).data("comid");
 
                     $.ajax(
                         {
                             type: "POST",
-                            url: "/ProductAdmin/ProductDelete/" + prodID,
+                            url: "/CommentAdmin/CommentDelete/" + comID,
                             success: function () {
                                 swal({
                                     title: "İtem Deleted!",
@@ -104,11 +85,11 @@
                                     icon: "success",
                                     button: "OK",
                                 }).then(() => {
-                                    window.location.replace("/ProductAdmin/Index");
+                                    window.location.replace("/CommentAdmin/Index");
                                 });
                             },
                             error: function () {
-                                swal("Your product is safe!");
+                                swal("Your imaginary file is safe!");
                             }
                         });
                 }
@@ -118,8 +99,10 @@
             });
         });
 
-
     </script>
+
+
+
 
     <script>
         $(document).ready(function () {
@@ -140,7 +123,5 @@
             });
         });
     </script>
-
-
-
 }
+

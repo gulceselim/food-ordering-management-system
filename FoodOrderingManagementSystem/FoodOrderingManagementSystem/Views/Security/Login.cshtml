@@ -1,0 +1,97 @@
+﻿@model FoodOrderingManagementSystem.Models.user
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="author" content="SemiColonWeb" />
+
+    <!-- Stylesheets
+    ============================================= -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/Content/assets_3/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/assets_3/style.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/assets_3/css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/assets_3/css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/assets_3/css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="~/Content/assets_3/css/magnific-popup.css" type="text/css" />
+
+    <link rel="stylesheet" href="~/Content/assets_3/css/custom.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Document Title
+    ============================================= -->
+    <title>Login</title>
+
+</head>
+
+<body class="stretched">
+
+    <!-- Document Wrapper
+    ============================================= -->
+    <div id="wrapper" class="clearfix">
+
+        <!-- Content
+        ============================================= -->
+        <section id="content">
+            <div class="content-wrap py-0">
+
+                <div class="section dark p-0 m-0 h-100 position-absolute"></div>
+
+                <div class="section bg-transparent min-vh-100 p-0 m-0 d-flex">
+                    <div class="vertical-middle">
+                        <div class="container py-5">
+
+                            <div class="card mx-auto rounded-0 border-0" style="max-width: 400px;">
+                                <div class="card-body" style="padding: 40px;">
+                                        <h3>Login to your Account</h3>
+                                        <div class="row">
+                                            @using (Html.BeginForm("Login","Security",FormMethod.Post))
+                                            {
+                                                <div class="col-12 form-group">
+                                                    @Html.LabelFor(m => m.username)
+                                                    @Html.TextBoxFor(m => m.username, new { @class = "form-control not-dark", placeholder = "Username" })
+                                                </div>
+
+                                                <div class="col-12 form-group">
+                                                    @Html.LabelFor(m => m.user_password)
+                                                    @Html.PasswordFor(m => m.user_password, new { @class = "form-control not-dark", placeholder = "Password" })
+                                                </div>
+
+                                                <div class="col-12 form-group mb-0">
+                                                    <button type="submit" class="button button-3d button-black m-0">Login</button>
+                                                    <button type="submit" class="button button-3d button-black m-0">Register</button>
+                                                </div>
+                                            }
+
+                                        </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- #content end -->
+
+    </div><!-- #wrapper end -->
+    <!-- Go To Top
+    ============================================= -->
+    <div id="gotoTop" class="icon-angle-up"></div>
+
+    <!-- JavaScripts
+    ============================================= -->
+    <script src="~/Content/assets_3/js/jquery.js"></script>
+    <script src="~/Content/assets_3/js/plugins.min.js"></script>
+
+    <!-- Footer Scripts
+    ============================================= -->
+    <script src="~/Content/assets_3/js/functions.js"></script>
+
+</body>
+</html>

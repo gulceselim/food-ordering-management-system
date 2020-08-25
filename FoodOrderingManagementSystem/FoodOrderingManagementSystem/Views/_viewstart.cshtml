@@ -3,7 +3,7 @@
 
     string CurrentControllerName = Convert.ToString(HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"]);
 
-    if(CurrentControllerName[CurrentControllerName.Length-1] == 'n')
+    if(CurrentControllerName.Contains("Admin"))
     {
         Layout = "~/Views/Shared/_LayoutAdminPanel.cshtml";
     }

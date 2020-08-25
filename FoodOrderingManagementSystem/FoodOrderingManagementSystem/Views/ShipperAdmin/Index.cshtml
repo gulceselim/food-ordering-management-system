@@ -15,6 +15,10 @@
                 <div class="card-header card-header-primary">
                     <h4 class="card-title ">
                         @restaurant.restaurant_name
+                        <label></label>
+                        <label></label>
+                        <label></label>
+                        <a href="/ShipperAdmin/ShipperAdd/@restaurant.restaurant_id" class="btn btn-primary" accesskey="">Add<i class="material-icons">add</i></a>
                     </h4>
                     <p class="card-category"></p>
                 </div>
@@ -84,12 +88,12 @@
                                 });
                             },
                             error: function () {
-                                swal("Your imaginary file is safe!");
+                                swal("The shipper information is safe!");
                             }
                         });
                 }
                 else {
-                    swal("Your imaginary file is safe!");
+                    swal("The shipper information is safe!");
                 }
             });
         });
