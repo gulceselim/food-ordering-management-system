@@ -26,9 +26,11 @@
                                     <th>Price</th>
                                     <th>Shipper Name</th>
                                     <th>Details</th>
-                                    <th>Actions</th>
-
-                                </tr>
+                                    @if (User.IsInRole("restaurant"))
+                                    {
+                                        <th>Actions</th>
+                                    }
+                                    </tr>
                             </thead>
                             <tbody>
 
@@ -36,19 +38,22 @@
                                 {
                                     if (restaurant.restaurant_name == order.restaurant_name)
                                     {
-                                        <tr class="Search">
-                                            <td>@order.uFirstName @order.uLastName</td>
-                                            <td>@order.product_name</td>
-                                            <td>@order.order_type</td>
-                                            <td>@order.price</td>
-                                            <td>@order.first_name @order.last_name</td>
-                                            <td>@order.order_details</td>
+                                    <tr class="Search">
+                                        <td>@order.uFirstName @order.uLastName</td>
+                                        <td>@order.product_name</td>
+                                        <td>@order.order_type</td>
+                                        <td>@order.price</td>
+                                        <td>@order.first_name @order.last_name</td>
+                                        <td>@order.order_details</td>
+                                        @if (User.IsInRole("restaurant"))
+                                        {
                                             <td class="actions">
                                                 <a href="#" class="btn btn-modern btn-rounded btn btn-danger orderDel" data-orderid="@order.order_id">Delete</a>
                                             </td>
+                                        }
                                         </tr>
+                                        }
                                     }
-                                }
 
                             </tbody>
                         </table>
@@ -59,65 +64,4 @@
     </div>
 }
 
-
-
-@section scripts{
-
-
-    <script>
-        $(".orderDel").click(function () {
-            swal("Are you sure you want to do this?", {
-                buttons: ["No", "Yes"],
-            }).then((result) => {
-                if (result) {
-                    var orderID = $(this).data("orderid");
-
-                    $.ajax(
-                        {
-                            type: "POST",
-                            url: "/OrderAdmin/OrderDelete/" + orderID,
-                            success: function () {
-                                swal({
-                                    title: "İtem Deleted!",
-                                    text: "You clicked the button!",
-                                    icon: "success",
-                                    button: "OK",
-                                }).then(() => {
-                                    window.location.replace("/OrderAdmin/Index");
-                                });
-                            },
-                            error: function () {
-                                swal("The order information is safe!");
-                            }
-                        });
-                }
-                else {
-                    swal("The oder information is safe!");
-                }
-            });
-        });
-
-
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            function Contains(text_one, text_two) {
-                if (text_one.indexOf(text_two) != -1)
-                    return true;
-            }
-            $("#Search").keyup(function () {
-                var searchText = $("#Search").val();
-                $(".Search").each(function () {
-                    if (!Contains($(this).text(), searchText)) {
-                        $(this).hide();
-                    }
-                    else {
-                        $(this).show();
-                    }
-                });
-            });
-        });
-    </script>
-}
 

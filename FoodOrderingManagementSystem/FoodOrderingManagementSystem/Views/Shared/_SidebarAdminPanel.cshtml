@@ -7,48 +7,58 @@
     </div>
     <div class="sidebar-wrapper ps-container ps-theme-default" data-ps-id="8e4ff877-54af-c132-cbf7-7c3b200cbf96">
         <ul class="nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="/RestaurantAdmin/Index">
-                    <i class="material-icons">local_dining</i>
-                    <p>Restaurants</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="/UserAdmin/Index">
-                    <i class="material-icons">person</i>
-                    <p>Users Profile</p>
-                </a>
-            </li>
+            @if (User.IsInRole("admin"))
+            {
+                <li class="nav-item ">
+                    <a class="nav-link" href="/RestaurantAdmin/Index">
+                        <i class="material-icons">local_dining</i>
+                        <p>Restaurants</p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link" href="/UserAdmin/Index">
+                        <i class="material-icons">person</i>
+                        <p>Users Profile</p>
+                    </a>
+                </li>
+            }
             <li class="nav-item ">
                 <a class="nav-link" href="/ProductAdmin/Index">
                     <i class="material-icons">room_service</i>
                     <p>Products</p>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="/CategoryAdmin/Index">
-                    <i class="material-icons">apps</i>
-                    <p>Categories</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="/RoleAdmin/Index">
-                    <i class="material-icons">group</i>
-                    <p>Roles</p>
-                </a>
-            </li>
+            @if (User.IsInRole("admin"))
+            {
+                <li class="nav-item ">
+                    <a class="nav-link" href="/CategoryAdmin/Index">
+                        <i class="material-icons">apps</i>
+                        <p>Categories</p>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
+                    <a class="nav-link" href="/RoleAdmin/Index">
+                        <i class="material-icons">group</i>
+                        <p>Roles</p>
+                    </a>
+                </li>
+            }
             <li class="nav-item ">
                 <a class="nav-link" href="/ShipperAdmin/Index">
                     <i class="material-icons">motorcycle</i>
                     <p>Shippers</p>
                 </a>
             </li>
+
             <li class="nav-item ">
                 <a class="nav-link" href="/OrderAdmin/Index">
                     <i class="material-icons">local_grocery_store</i>
                     <p>Orders</p>
                 </a>
             </li>
+
             <li class="nav-item ">
                 <a class="nav-link" href="/CommentAdmin/Index">
                     <i class="material-icons">comment</i>

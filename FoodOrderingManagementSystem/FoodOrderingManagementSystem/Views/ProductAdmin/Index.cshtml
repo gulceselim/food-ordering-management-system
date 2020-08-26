@@ -6,8 +6,7 @@
 @using FoodOrderingManagementSystem.Models
 @model IEnumerable<FoodOrderingManagementSystem.Models.product>
 
-
-@foreach (restaurant restaurant in ViewBag.restaurant)
+@foreach (restaurant restaurant in ViewBag.restaurants)
 {
     <div class="row">
         <div class="col-md-12 Search">
@@ -18,7 +17,10 @@
                         <label></label>
                         <label></label>
                         <label></label>
-                        <a href="/ProductAdmin/ProductAdd/@restaurant.restaurant_id" class="btn btn-primary" accesskey="">Add<i class="material-icons">add</i></a>
+                        @if (User.IsInRole("restaurant"))
+                        {
+                            <a href="/ProductAdmin/ProductAdd/@restaurant.restaurant_id" class="btn btn-primary" accesskey="">Add<i class="material-icons">add</i></a>
+                        }
                     </h4>
                     <p class="card-category"></p>
                 </div>
@@ -33,7 +35,10 @@
                                     <th>Price</th>
                                     <th>Detail</th>
                                     <th>Active</th>
-                                    <th>Actions</th>
+                                    @if (User.IsInRole("restaurant"))
+                                    {
+                                        <th>Actions</th>
+                                    }
                                 </tr>
 
                             </thead>
@@ -59,11 +64,13 @@
                                                 }
                                             </td>
 
-
-                                            <td class="actions">
-                                                <a href="/ProductAdmin/ProductUpdate/@product.product_id" class="btn btn-modern btn-rounded btn-success mb-2">Update</a>
-                                                <a href="#" class="btn btn-modern btn-rounded btn btn-danger prodDel" data-prodid="@product.product_id">Delete</a>
-                                            </td>
+                                            @if (User.IsInRole("restaurant"))
+                                            {
+                                                <td class="actions">
+                                                    <a href="/ProductAdmin/ProductUpdate/@product.product_id" class="btn btn-modern btn-rounded btn-success mb-2">Update</a>
+                                                    <a href="#" class="btn btn-modern btn-rounded btn btn-danger prodDel" data-prodid="@product.product_id">Delete</a>
+                                                </td>
+                                            }
                                         </tr>
                                     }
 
@@ -76,6 +83,7 @@
             </div>
         </div>
     </div>
+
 }
 
 

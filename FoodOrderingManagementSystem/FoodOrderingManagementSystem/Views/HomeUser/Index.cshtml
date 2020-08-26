@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@section role{
+        @if (User.IsInRole("admin") || User.IsInRole("restaurant"))
+        {
+            <li>
+                <a href="/HomeAdmin/Index">
+                    Management Page
+                </a>
+            </li>
+        }
+    }

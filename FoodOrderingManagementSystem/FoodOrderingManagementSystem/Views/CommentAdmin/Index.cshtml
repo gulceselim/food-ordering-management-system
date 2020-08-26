@@ -27,7 +27,10 @@
                                     <th>Comment Text</th>
                                     <th>User Name</th>
                                     <th>Comment Time</th>
-                                    <th>Actions</th>
+                                    @if (User.IsInRole("restaurant"))
+                                    {
+                                        <th>Actions</th>
+                                    }
 
                                 </tr>
 
@@ -38,15 +41,19 @@
                                 {
                                     if (restaurant.restaurant_id == comment.restaurant_id)
                                     {
-                                        <tr class="Search">
-                                            <td>@comment.comment_text</td>
-                                            <td>@comment.user.first_name @comment.user.last_name</td>
-                                            <td>@comment.comment_time</td>
+                                    <tr class="Search">
+                                        <td>@comment.comment_text</td>
+                                        <td>@comment.user.first_name @comment.user.last_name</td>
+                                        <td>@comment.comment_time</td>
 
+                                        @if (User.IsInRole("restaurant"))
+                                        {
                                             <td class="actions">
                                                 <a href="#" class="btn btn-modern btn-rounded btn btn-danger comDel" data-comid="@comment.comment_id">Delete</a>
                                             </td>
-                                        </tr>
+                                        
+                                        }
+                                    </tr>
                                     }
 
                                 }

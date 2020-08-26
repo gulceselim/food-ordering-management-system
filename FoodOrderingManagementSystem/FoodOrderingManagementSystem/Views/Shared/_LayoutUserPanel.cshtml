@@ -120,16 +120,9 @@
                                             <nav class="collapse">
                                                 <ul class="nav nav-pills" id="mainNav">
                                                     <li class="dropdown">
-                                                        <a class="dropdown-item dropdown-toggle" href="index.html">
+                                                        <a class="dropdown-item dropdown-toggle" href="/RestaurantUser/Index">
                                                             Anasayfa
                                                         </a>
-                                                        <ul class="dropdown-menu">
-                                                            <li>
-                                                                <a class="dropdown-item" href="index.html">
-                                                                    Landing Page
-                                                                </a>
-                                                            </li>
-                                                        </ul>
                                                     </li>
                                                 </ul>
                                             </nav>
@@ -175,7 +168,7 @@
 
                         <div class="masonry-loader masonry-loader-showing">
                             <div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
-                                <div class="col-sm-6 product">
+                                <div class="col-sm-2 product">
                                     <span class="product-thumb-info border-0">
                                         <a href="shop-cart.html" class="add-to-cart-product bg-color-primary">
                                             <span class="text-uppercase text-1">Add to Cart</span>
@@ -196,42 +189,33 @@
                                         </span>
                                     </span>
                                 </div>
+
+
                                 @RenderBody()
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <aside class="sidebar">
-                            <form class="contact-form" action="php/contact-form.php" method="POST">
-                                <div class="contact-form-success alert alert-success d-none mt-4">
-                                    <strong>Success!</strong> Your message has been sent to us.
-                                </div>
-                                <div class="contact-form-error alert alert-danger d-none mt-4">
-                                    <strong>Error!</strong> There was an error sending your message.
-                                    <span class="mail-error-message text-1 d-block"></span>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col">
-                                        <label class="required font-weight-bold text-dark text-1 mb-0">Kullancı Adı</label>
-                                        <input type="text" value="" data-msg-required="Lütfen kullanıcı adını yazınız." maxlength="100" class="form-control" name="name" required>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col">
-                                        <label class="required font-weight-bold text-dark text-1 mb-0">Şifre</label>
-                                        <input type="password" value="" data-msg-required="Please enter your email address." maxlength="100" class="form-control" name="password" required>
-                                    </div>
-                                </div>
-                                <div class="form-row mb-3 pb-1">
-                                    <div class="form-group col">
-                                        <input type="submit" value="Giriş" class="btn btn-primary btn-modern" data-loading-text="Loading...">
-                                    </div>
-                                    <span>
-                                        Üyeliğiniz yok mu?
-                                        <a href="/istanbul-uye-ol">Yeni Üyelik!</a>
-                                    </span>
-                                </div>
-                            </form>
+                            <ul class="nav nav-pills">
+                                <li>
+                                    <p>
+                                        Hoşgeldin @HttpContext.Current.User.Identity.Name !
+                                    </p>
+                                </li>
+                            </ul>
+                            <ul class="nav nav-pills">
+                                <li>
+                                    <a href="/Security/Logout">
+                                        Çıkış Yap
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <ul class="nav nav-pills">
+                                @RenderSection("role",false)
+
+                            </ul>
                         </aside>
                     </div>
                 </div>
