@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace FoodOrderingManagementSystem.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class UserAdminController : Controller
     {
         FoodOrderingMSModel models = new FoodOrderingMSModel();

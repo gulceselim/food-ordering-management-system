@@ -12,12 +12,22 @@ namespace FoodOrderingManagementSystem.Controllers
 
         FoodOrderingMSModel models = new FoodOrderingMSModel();
         // GET: ShipperAdmin
+        [Authorize(Roles = "restaurant,admin")]
         public ActionResult Index()
         {
             List<shipper> shippers = models.shippers.ToList();
-            ViewBag.restaurants = models.restaurants.ToList();
+            if (User.IsInRole("restaurant"))
+            {
+                ViewBag.restaurants = models.restaurants.Where(x => x.username == User.Identity.Name).ToList();
+            }
+            else
+            {
+                ViewBag.restaurants = models.restaurants.ToList();
+            }
             return View(shippers);
         }
+
+        [Authorize(Roles = "restaurant")]
         public ActionResult ShipperUpdate(int id)
         {
             shipper shipper = models.shippers.FirstOrDefault(x => x.shipper_id == id);
@@ -25,7 +35,7 @@ namespace FoodOrderingManagementSystem.Controllers
         }
 
         [HttpPost]
-
+        [Authorize(Roles = "restaurant")]
         public ActionResult ShipperUpdate(shipper s)
         {
             shipper shipper = models.shippers.FirstOrDefault(x => x.shipper_id == s.shipper_id);
@@ -36,12 +46,14 @@ namespace FoodOrderingManagementSystem.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "restaurant")]
         public ActionResult ShipperAdd(int id)
         {
             restaurant restaurant = models.restaurants.FirstOrDefault(x => x.restaurant_id == id);
             return View(restaurant);
         }
         [HttpPost]
+        [Authorize(Roles = "restaurant")]
         public ActionResult ShipperAdd(shipper s)
         {
             models.shippers.Add(s);
@@ -50,6 +62,7 @@ namespace FoodOrderingManagementSystem.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "restaurant")]
         public ActionResult ShipperDelete(int id)
         {
             shipper shipper = models.shippers.FirstOrDefault(x => x.shipper_id == id);

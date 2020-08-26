@@ -5,9 +5,11 @@ using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace FoodOrderingManagementSystem.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class RestaurantAdminController : Controller
     {
         FoodOrderingMSModel models = new FoodOrderingMSModel();
@@ -15,8 +17,8 @@ namespace FoodOrderingManagementSystem.Controllers
         // GET: Restaurant
         public ActionResult Index()
         {
-            List<RestaurantCity> restaurants = models.RestaurantCities.ToList();
 
+            List<RestaurantCity> restaurants = models.RestaurantCities.ToList();
             return View(restaurants);
         }
 

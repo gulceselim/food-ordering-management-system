@@ -11,14 +11,25 @@ namespace FoodOrderingManagementSystem.Controllers
     {
         FoodOrderingMSModel models = new FoodOrderingMSModel();
         // GET: CommentAdmin
+        [Authorize(Roles = "restaurant,admin")]
         public ActionResult Index()
         {
             List<comment> comments = models.comments.ToList();
-            ViewBag.restaurants = models.restaurants.ToList();
+            if (User.IsInRole("restaurant"))
+            {
+                ViewBag.restaurants = models.restaurants.Where(x => x.username == User.Identity.Name).ToList();
+            }
+            else
+            {
+                ViewBag.restaurants = models.restaurants.ToList();
+            }
+
             return View(comments);
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
+
         public ActionResult CommentDelete(int id)
         {
             comment comment = models.comments.FirstOrDefault(x => x.comment_id == id);

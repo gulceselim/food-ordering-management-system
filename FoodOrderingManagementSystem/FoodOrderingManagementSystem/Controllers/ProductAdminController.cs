@@ -11,14 +11,26 @@ namespace FoodOrderingManagementSystem.Controllers
     {
         FoodOrderingMSModel models = new FoodOrderingMSModel();
         // GET: ProductAdmin
+        [Authorize(Roles = "restaurant,admin")]
+
         public ActionResult Index()
         {
-            ViewBag.restaurant = models.restaurants.ToList();
+
+            if(User.IsInRole("restaurant"))
+            {
+                ViewBag.restaurants = models.restaurants.Where(x => x.username == User.Identity.Name).ToList();
+            }
+            else
+            {
+                ViewBag.restaurants = models.restaurants.ToList();
+            }
+
             List<product> products = models.products.ToList();
 
             return View(products);
         }
 
+        [Authorize(Roles = "restaurant")]
         public ActionResult ProductUpdate(int id)
         {
             product products = models.products.FirstOrDefault(x => x.product_id == id);
@@ -27,7 +39,7 @@ namespace FoodOrderingManagementSystem.Controllers
         }
 
         [HttpPost]
-
+        [Authorize(Roles = "restaurant")]
         public ActionResult ProductUpdate(product p)
         {
             product product = models.products.FirstOrDefault(x => x.product_id == p.product_id);
@@ -43,6 +55,8 @@ namespace FoodOrderingManagementSystem.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "restaurant")]
+
         public ActionResult ProductDelete(int id)
         {
             product product = models.products.FirstOrDefault(x => x.product_id == id);
@@ -53,6 +67,8 @@ namespace FoodOrderingManagementSystem.Controllers
 
         }
 
+        [Authorize(Roles = "restaurant")]
+
         public ActionResult ProductAdd(int id)
         {
             restaurant restaurant = models.restaurants.FirstOrDefault(x => x.restaurant_id == id);
@@ -60,6 +76,8 @@ namespace FoodOrderingManagementSystem.Controllers
             return View(restaurant);
         }
         [HttpPost]
+        [Authorize(Roles = "restaurant")]
+
         public ActionResult ProductAdd(product p)
         {
             models.products.Add(p);

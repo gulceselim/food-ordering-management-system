@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodOrderingManagementSystem.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,13 +7,14 @@ using System.Web.Mvc;
 
 namespace FoodOrderingManagementSystem.Controllers
 {
-    public class HomeAdminController : Controller
+    public class HomeUserController : Controller
     {
-        // GET: HomeAdmin
-        [Authorize(Roles = "admin,restaurant")]
+        // GET: HomeUser
         public ActionResult Index()
         {
             return View();
         }
+
+
     }
 }

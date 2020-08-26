@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace FoodOrderingManagementSystem.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class CategoryAdminController : Controller
     {
         FoodOrderingMSModel models = new FoodOrderingMSModel();
