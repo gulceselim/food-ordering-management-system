@@ -1,6 +1,9 @@
-﻿
+﻿@using FoodOrderingManagementSystem.Models
 @{
     Layout = null;
+    FoodOrderingMSModel models = new FoodOrderingMSModel();
+    List<category> categories = models.categories.ToList();
+    List<restaurant> restaurants = models.restaurants.ToList();
 }
 <!DOCTYPE html>
 <html>
@@ -64,7 +67,7 @@
                         <div class="header-column">
                             <div class="header-row">
                                 <div class="header-logo">
-                                    <a href="index.html">
+                                    <a href="/HomeUser/Index">
                                         <img alt="Porto" width="150" height="95" data-sticky-width="82" data-sticky-height="40" data-sticky-top="84" src="~/Content/assets_2/img/project-logo.png">
                                     </a>
                                 </div>
@@ -120,7 +123,7 @@
                                             <nav class="collapse">
                                                 <ul class="nav nav-pills" id="mainNav">
                                                     <li class="dropdown">
-                                                        <a class="dropdown-item dropdown-toggle" href="/RestaurantUser/Index">
+                                                        <a class="dropdown-item dropdown-toggle" href="/HomeUser/Index">
                                                             Anasayfa
                                                         </a>
                                                     </li>
@@ -148,7 +151,7 @@
                         <aside class="sidebar">
                             <form action="page-search-results.html" method="get">
                                 <div class="input-group mb-3 pb-1">
-                                    <input class="form-control text-1" placeholder="Arama..." name="s" id="s" type="text">
+                                    <input class="form-control text-1" placeholder="Arama..." name="s" id="Search" type="text">
                                     <span class="input-group-append">
                                         <button type="submit" class="btn btn-dark text-1 p-2"><i class="fas fa-search m-2"></i></button>
                                     </span>
@@ -156,11 +159,17 @@
                             </form>
                             <h5 class="font-weight-bold pt-3">Restoranlar</h5>
                             <ul class="nav nav-list flex-column">
-                                <li class="nav-item"><a class="nav-link" href="#">Arts & Crafts</a></li>
+                                @foreach (var restaurant in restaurants)
+                                {
+                                    <li class="nav-item"><a class="nav-link" href="/RestaurantUser/Index/@restaurant.restaurant_id">@restaurant.restaurant_name</a></li>
+                                }
                             </ul>
                             <h5 class="font-weight-bold pt-5">Kategoriler</h5>
                             <div class="mb-3 pb-1">
-                                <a href="#"><span class="badge badge-dark badge-sm badge-pill text-uppercase px-2 py-1 mr-1">Nike</span></a>
+                                @foreach (var category in categories)
+                                {
+                                    <a href="/CategoryUser/Index/@category.category_id"><span class="badge badge-dark badge-sm badge-pill text-uppercase px-2 py-1 mr-1">@category.category_name</span></a>
+                                }
                             </div>
                         </aside>
                     </div>
@@ -168,29 +177,6 @@
 
                         <div class="masonry-loader masonry-loader-showing">
                             <div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
-                                <div class="col-sm-2 product">
-                                    <span class="product-thumb-info border-0">
-                                        <a href="shop-cart.html" class="add-to-cart-product bg-color-primary">
-                                            <span class="text-uppercase text-1">Add to Cart</span>
-                                        </a>
-                                        <a href="shop-product-sidebar-left.html">
-                                            <span class="product-thumb-info-image">
-                                                <img alt="" class="img-fluid" src="~/Content/assets_2/img/products/product-grey-1.jpg">
-                                            </span>
-                                        </a>
-                                        <span class="product-thumb-info-content product-thumb-info-content pl-0 bg-color-light">
-                                            <a href="shop-product-sidebar-left.html">
-                                                <h4 class="text-4 text-primary">Photo Camera</h4>
-                                                <span class="price">
-                                                    <del><span class="amount">$325</span></del>
-                                                    <ins><span class="amount text-dark font-weight-semibold">$299</span></ins>
-                                                </span>
-                                            </a>
-                                        </span>
-                                    </span>
-                                </div>
-
-
                                 @RenderBody()
                             </div>
                         </div>
@@ -213,7 +199,14 @@
 
                             </ul>
                             <ul class="nav nav-pills">
-                                @RenderSection("role",false)
+                                @if (User.IsInRole("admin") || User.IsInRole("restaurant"))
+                                {
+                                    <li>
+                                        <a href="/HomeAdmin/Index">
+                                            Management Page
+                                        </a>
+                                    </li>
+                                }
 
                             </ul>
                         </aside>
@@ -225,13 +218,7 @@
             <div class="container mt-4 pt-2 pb-5 footer-top-light-border">
                 <div class="row py-4">
                     <div class="col-md-3 text-center text-md-left">
-                        <h5 class="text-4 text-color-light mb-3 mt-4 mt-lg-0">CONTACT INFO</h5>
-                        <p class="text-3 mb-0 text-color-light opacity-7">ADDRESS</p>
-                        <p class="text-3 mb-3">123 Street name, City, USA.</p>
-                        <p class="text-3 mb-0 text-color-light opacity-7">PHONE</p>
-                        <p class="text-3 mb-3">Toll Free (123) 456-7890</p>
-                        <p class="text-3 mb-0 text-color-light opacity-7">EMAIL</p>
-                        <p class="text-3 mb-0"><a href="mailto:info@porto.com" class="">mail@example.com</a></p>
+                        
                     </div>
                     <div class="col-md-9 text-center text-md-left">
                         <div class="row">
@@ -322,7 +309,7 @@
         ga('send', 'pageview');
     </script>
      -->
-
+    @RenderSection("script", false)
 </body>
 </html>
 

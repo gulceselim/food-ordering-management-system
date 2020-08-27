@@ -1,7 +1,6 @@
 ﻿
 @{
     ViewBag.Title = "Restaurants";
-    string city = "";
 }
 @using FoodOrderingManagementSystem.Models
 @model List<RestaurantCity>
@@ -31,25 +30,13 @@
                         <tbody>
                             @foreach (var restaurants in Model)
                             {
-                                <tr class="Search">
+                                <tr class="Search"> 
                                     <td>@restaurants.restaurant_name</td>
                                     <td>@restaurants.username</td>
                                     <td>@restaurants.restaurant_address</td>
                                     <td>@restaurants.phone_number</td>
                                     <td>@restaurants.rating</td>
-
-                                    @foreach (var restaurant in Model)
-                                    {
-                                        if(restaurant.restaurant_name == restaurants.restaurant_name)
-                                        {
-                                            city += restaurant.city_name + " ";
-                                        }
-                                    }
-                                    <td>@city</td>
-                                    @{ 
-                                        city = "";
-                                    }
-                                   
+                                    <td>@restaurants.city_name</td>
 
                                     <td class="actions">
                                         <a href="/RestaurantAdmin/RestaurantUpdate/@restaurants.restaurant_id" class="btn btn-modern btn-rounded btn-success mb-2">Update</a>
