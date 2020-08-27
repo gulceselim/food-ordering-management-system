@@ -108,6 +108,10 @@ namespace FoodOrderingManagementSystem.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<product>()
+                .Property(e => e.image)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<product>()
                 .HasMany(e => e.order_product)
                 .WithRequired(e => e.product)
                 .WillCascadeOnDelete(false);
@@ -130,6 +134,10 @@ namespace FoodOrderingManagementSystem.Models
 
             modelBuilder.Entity<restaurant>()
                 .Property(e => e.phone_number)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<restaurant>()
+                .Property(e => e.image)
                 .IsUnicode(false);
 
             modelBuilder.Entity<restaurant>()

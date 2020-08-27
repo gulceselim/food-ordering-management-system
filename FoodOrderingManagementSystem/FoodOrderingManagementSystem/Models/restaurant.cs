@@ -39,6 +39,8 @@ namespace FoodOrderingManagementSystem.Models
         [StringLength(50)]
         public string phone_number { get; set; }
 
+        public string image { get; set; }
+
         public int? rating { get; set; }
 
         public int role_id { get; set; }
