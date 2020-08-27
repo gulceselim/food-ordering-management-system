@@ -103,6 +103,7 @@
     <Content Include="Content\assets_1\demo\demo.js" />
     <Content Include="Content\assets_1\img\apple-icon.png" />
     <Content Include="Content\assets_1\img\bg2.jpg" />
+    <Content Include="Content\assets_1\img\burgerking-logo.png" />
     <Content Include="Content\assets_1\img\city-profile.jpg" />
     <Content Include="Content\assets_1\img\city.jpg" />
     <Content Include="Content\assets_1\img\cover.jpg" />
@@ -111,6 +112,8 @@
     <Content Include="Content\assets_1\img\faces\card-profile2-square.jpg" />
     <Content Include="Content\assets_1\img\faces\marc.jpg" />
     <Content Include="Content\assets_1\img\favicon.png" />
+    <Content Include="Content\assets_1\img\kfc-kova.jpg" />
+    <Content Include="Content\assets_1\img\KFC_logo.png" />
     <Content Include="Content\assets_1\img\mask.png" />
     <Content Include="Content\assets_1\img\new_logo.png" />
     <Content Include="Content\assets_1\img\sidebar-1.jpg" />
@@ -6635,6 +6638,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CategoryAdminController.cs" />
+    <Compile Include="Controllers\CategoryUserController.cs" />
     <Compile Include="Controllers\CommentAdminController.cs" />
     <Compile Include="Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\HomeUserController.cs" />
@@ -6702,6 +6706,7 @@
     <Content Include="Views\CommentAdmin\Index.cshtml" />
     <Content Include="Views\Security\Login.cshtml" />
     <Content Include="Views\HomeUser\Index.cshtml" />
+    <Content Include="Views\CategoryUser\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
