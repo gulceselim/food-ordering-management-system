@@ -7,14 +7,16 @@ using System.Web.Mvc;
 
 namespace FoodOrderingManagementSystem.Controllers
 {
-    public class RestaurantUserController : Controller
+    public class CategoryUserController : Controller
     {
         FoodOrderingMSModel models = new FoodOrderingMSModel();
-        // GET: RestaurantUser
+        // GET: CategoryUser
         public ActionResult Index(int id)
         {
-            List<product> products = models.products.Where(x => x.restaurant_id == id).ToList();
+            List<product> products = models.products.Where(x => x.category_id == id).ToList();
             return View(products);
+
         }
+
     }
 }
