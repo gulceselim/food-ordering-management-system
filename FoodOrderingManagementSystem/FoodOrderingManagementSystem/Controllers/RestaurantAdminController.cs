@@ -17,8 +17,9 @@ namespace FoodOrderingManagementSystem.Controllers
         // GET: Restaurant
         public ActionResult Index()
         {
-
-            List<RestaurantCity> restaurants = models.RestaurantCities.ToList();
+            List<RestaurantCity> restaurants = models.RestaurantCities.GroupBy(r => r.restaurant_id).Select(x => x.FirstOrDefault()).ToList();
+            
+            
             return View(restaurants);
         }
 
