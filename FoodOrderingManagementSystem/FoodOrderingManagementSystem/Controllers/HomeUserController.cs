@@ -9,10 +9,12 @@ namespace FoodOrderingManagementSystem.Controllers
 {
     public class HomeUserController : Controller
     {
+        FoodOrderingMSModel models = new FoodOrderingMSModel();
         // GET: HomeUser
         public ActionResult Index()
         {
-            return View();
+            List<restaurant> restaurants = models.restaurants.ToList();
+            return View(restaurants);
         }
 
 
