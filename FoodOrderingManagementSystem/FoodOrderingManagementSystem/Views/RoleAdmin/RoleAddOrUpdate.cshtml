@@ -1,10 +1,9 @@
-﻿
+﻿@model FoodOrderingManagementSystem.Models.role
 @{
     ViewBag.Title = "Role Add";
 }
 
 
-@using FoodOrderingManagementSystem.Models
 
 <div class="row">
     <div class="col-md-8">
@@ -18,18 +17,23 @@
             <label> </label>
             <label> </label>
             <div class="card-body">
-                <form action="/RoleAdmin/RoleAdd" method="post" role="form">
+                @using (Html.BeginForm("Save", "RoleAdmin", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group bmd-form-group">
-                                <label class="bmd-label-floating">Role Name</label>
-                                <input type="text" class="form-control" name="role_name">
+                                @Html.LabelFor(m => m.role_name , new { @class = "bmd-label-floating" })
+                                @Html.TextBoxFor(m => m.role_name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.role_name)
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary pull-right">Add Role</button>
+                    @Html.HiddenFor(m => m.role_id)
+                    <button type="submit" class="btn btn-primary pull-right">Save</button>
                     <div class="clearfix"></div>
-                </form>
+
+                }
             </div>
         </div>
     </div>

@@ -22,13 +22,13 @@
                         <div class="col-md-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">First Name</label>
-                                <input value="@Model.first_name" type="text" class="form-control" name="first_name">
+                                <input value="@Model.first_name" type="text" class="form-control" name="first_name" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Last Name</label>
-                                <input value="@Model.last_name" type="text" class="form-control" name="last_name">
+                                <input value="@Model.last_name" type="text" class="form-control" name="last_name" required>
 
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="col-md-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Identification Number</label>
-                                <input value="@Model.identification_number" type="text" class="form-control" name="identification_number">
+                                <input value="@Model.identification_number" type="tel" pattern="[0-9]{11}" class="form-control" name="identification_number" required>
                             </div>
                         </div>
                         <div class="col-md-4">

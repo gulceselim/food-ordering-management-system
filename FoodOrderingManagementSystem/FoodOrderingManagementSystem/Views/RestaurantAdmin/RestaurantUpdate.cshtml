@@ -23,13 +23,13 @@
                             <div class="form-group bmd-form-group">
 
                                 <label class="bmd-label-floating">Restaurant Name</label>
-                                <input value="@Model.restaurant_name" type="text" class="form-control" name="restaurant_name">
+                                <input value="@Model.restaurant_name" type="text" class="form-control" name="restaurant_name" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Restaurant Username</label>
-                                <input value="@Model.username" type="text" class="form-control" name="username">
+                                <input value="@Model.username" type="text" class="form-control" name="username" required>
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                         <div class="col-md-12">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Address</label>
-                                <input value="@Model.restaurant_address" type="text" class="form-control" name="restaurant_address">
+                                <input value="@Model.restaurant_address" type="text" class="form-control" name="restaurant_address" required>
                             </div>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                         <div class="col-md-4">
                             <div class="form-group bmd-form-group">
                                 <span> </span><label class="bmd-label-floating">Phone Number</label>
-                                <input value="@Model.phone_number" type="text" class="form-control" name="phone_number">
+                                <input value="@Model.phone_number" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" type="text" class="form-control" name="phone_number" required>
                             </div>
                         </div>
                         <div class="col-md-4">

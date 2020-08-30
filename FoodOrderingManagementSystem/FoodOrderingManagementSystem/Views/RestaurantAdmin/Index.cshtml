@@ -9,14 +9,22 @@
     <div class="col-md-12 Search">
         <div class="card">
             <div class="card-header card-header-primary">
-                <h4 class="card-title ">Restaurants</h4>
+                <h4 class="card-title ">
+                    Restaurants
+                    <label></label>
+                    <label></label>
+                    <label></label>
+                    <a href="/RestaurantAdmin/RestaurantAdd" class="btn btn-primary" accesskey="">Add<i class="material-icons">add</i></a>
+                </h4>
                 <p class="card-category"></p>
+               
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>Image</th>
                                 <th>Restaurant Name</th>
                                 <th>Restaurant Username</th>
                                 <th>Address</th>
@@ -31,6 +39,7 @@
                             @foreach (var restaurants in Model)
                             {
                                 <tr class="Search"> 
+                                    <td><img src="@restaurants.image" width="100" height="100" alt="Restaurant Image" /></td>
                                     <td>@restaurants.restaurant_name</td>
                                     <td>@restaurants.username</td>
                                     <td>@restaurants.restaurant_address</td>

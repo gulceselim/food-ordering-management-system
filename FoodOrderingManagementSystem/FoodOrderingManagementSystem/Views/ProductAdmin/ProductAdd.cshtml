@@ -19,26 +19,39 @@
             <label> </label>
             <label> </label>
             <div class="card-body">
-                <form action="/ProductAdmin/ProductAdd" method="post" role="form">
+                @using (Html.BeginForm("ProductAdd",
+                        "ProductAdmin",
+                        FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))
+                {
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Product Name</label>
-                                <input type="text" class="form-control" name="product_name">
+                                <input type="text" class="form-control" name="product_name" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Price</label>
-                                <input type="text" class="form-control" name="price">
+                                <input type="number" class="form-control" name="price" required>
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <label>Image</label>
+                                <input id="image" type="file" class="form-control" name="file" required>
+                            </div>
+                            <label>@ViewBag.message</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Details</label>
-                                <input type="text" class="form-control" name="details">
+                                <input type="text" class="form-control" name="details" required>
                             </div>
                         </div>
                     </div>
@@ -72,7 +85,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary pull-right">Add Product</button>
                     <div class="clearfix"></div>
-                </form>
+                }
             </div>
         </div>
     </div>

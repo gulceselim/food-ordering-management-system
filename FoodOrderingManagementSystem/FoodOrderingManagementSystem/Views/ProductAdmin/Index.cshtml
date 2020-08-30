@@ -30,6 +30,7 @@
                             <thead>
 
                                 <tr>
+                                    <th>Image</th>
                                     <th>Product Name</th>
                                     <th>Category</th>
                                     <th>Price</th>
@@ -49,6 +50,8 @@
                                     if (restaurant.restaurant_id == product.restaurant_id)
                                     {
                                         <tr class="Search">
+                                            <td><img src="@product.image" width="100" height="100" alt="Product Image" /></td>
+
                                             <td>@product.product_name</td>
                                             <td>@product.category.category_name</td>
                                             <td>@product.price</td>

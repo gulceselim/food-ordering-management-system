@@ -25,13 +25,13 @@
                             <div class="form-group bmd-form-group">
 
                                 <label class="bmd-label-floating">First Name</label>
-                                <input value="@Model.first_name" type="text" class="form-control" name="first_name">
+                                <input value="@Model.first_name" type="text" class="form-control" name="first_name" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Last Name</label>
-                                <input value="@Model.last_name" type="text" class="form-control" name="last_name">
+                                <input value="@Model.last_name" type="text" class="form-control" name="last_name" required>
 
                             </div>
                         </div>
@@ -42,13 +42,13 @@
                         <div class="col-md-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Username</label>
-                                <input value="@Model.username" type="text" class="form-control" name="username">
+                                <input value="@Model.username" type="text" class="form-control" name="username" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Email</label>
-                                <input value="@Model.user_email" type="text" class="form-control" name="user_email">
+                                <input value="@Model.user_email" type="email" class="form-control" name="user_email" required>
 
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                         <div class="col-md-12">
                             <div class="form-group bmd-form-group">
                                 <label class="bmd-label-floating">Address</label>
-                                <input value="@Model.user_address" type="text" class="form-control" name="user_address">
+                                <input value="@Model.user_address" type="text" class="form-control" name="user_address" required>
                             </div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                         <div class="col-md-4">
                             <div class="form-group bmd-form-group">
                                 <span> </span><label class="bmd-label-floating">Phone Number</label>
-                                <input value="@Model.phone_number" type="text" class="form-control" name="phone_number">
+                                <input value="@Model.phone_number" type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" placeholder="05XXXXXXXXX" class="form-control" name="phone_number" required>
                             </div>
                         </div>
                         <div class="col-md-4">
