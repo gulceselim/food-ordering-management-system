@@ -6082,6 +6082,7 @@
     <Content Include="Content\assets_3\js\plugins.youtube.js" />
     <Content Include="Content\assets_3\style.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Site2.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -6637,9 +6638,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BasketUserController.cs" />
     <Compile Include="Controllers\CategoryAdminController.cs" />
     <Compile Include="Controllers\CategoryUserController.cs" />
     <Compile Include="Controllers\CommentAdminController.cs" />
+    <Compile Include="Controllers\CommentUserController.cs" />
     <Compile Include="Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\HomeUserController.cs" />
     <Compile Include="Controllers\OrderAdminController.cs" />
@@ -6689,13 +6692,10 @@
     <Content Include="Views\UserAdmin\UserUpdate.cshtml" />
     <Content Include="Views\ProductAdmin\Index.cshtml" />
     <Content Include="Views\CategoryAdmin\Index.cshtml" />
-    <Content Include="Views\CategoryAdmin\CategoryUpdate.cshtml" />
-    <Content Include="Views\CategoryAdmin\CategoryAdd.cshtml" />
+    <Content Include="Views\CategoryAdmin\CategoryAddOrUpdate.cshtml" />
     <Content Include="Views\ProductAdmin\ProductUpdate.cshtml" />
     <Content Include="Views\RoleAdmin\Index.cshtml" />
-    <Content Include="Views\RoleAdmin\_viewstart.cshtml" />
-    <Content Include="Views\RoleAdmin\RoleUpdate.cshtml" />
-    <Content Include="Views\RoleAdmin\RoleAdd.cshtml" />
+    <Content Include="Views\RoleAdmin\RoleAddOrUpdate.cshtml" />
     <Content Include="Views\ShipperAdmin\Index.cshtml" />
     <Content Include="Views\OrderAdmin\Index.cshtml" />
     <Content Include="Views\_viewstart.cshtml" />
@@ -6707,6 +6707,7 @@
     <Content Include="Views\Security\Login.cshtml" />
     <Content Include="Views\HomeUser\Index.cshtml" />
     <Content Include="Views\CategoryUser\Index.cshtml" />
+    <Content Include="Views\RestaurantAdmin\RestaurantAdd.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6717,6 +6718,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\BasketUser\" />
+    <Folder Include="Views\CommentUser\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
