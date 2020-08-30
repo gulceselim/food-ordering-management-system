@@ -49,6 +49,8 @@ namespace FoodOrderingManagementSystem.Models
 
         public int? order_count { get; set; }
 
+        public int? comment_count { get; set; }
+
         public int role_id { get; set; }
 
         public int city_id { get; set; }

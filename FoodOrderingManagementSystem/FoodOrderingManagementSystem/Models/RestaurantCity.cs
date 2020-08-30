@@ -12,12 +12,16 @@ namespace FoodOrderingManagementSystem.Models
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int city_id { get; set; }
+        public int restaurant_id { get; set; }
+
+        public string city_name { get; set; }
+
+        public string image { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int restaurant_id { get; set; }
+        public int city_id { get; set; }
 
         [Key]
         [Column(Order = 2)]
@@ -35,11 +39,6 @@ namespace FoodOrderingManagementSystem.Models
 
         [Key]
         [Column(Order = 5)]
-        [StringLength(50)]
-        public string city_name { get; set; }
-
-        [Key]
-        [Column(Order = 6)]
         [StringLength(50)]
         public string phone_number { get; set; }
 

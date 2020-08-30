@@ -17,17 +17,21 @@ namespace FoodOrderingManagementSystem.Models
         [Key]
         public int product_id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "*The product name field is required.")]
         [StringLength(50)]
+        [Display(Name = "Product Name")]
         public string product_name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "*The detail field is required.")]
+        [Display(Name = "Detail")]
         public string details { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "*The price field is required.")]
         [StringLength(50)]
+        [Display(Name = "Price")]
         public string price { get; set; }
 
+        [Required(ErrorMessage = "*The image field is required.")]
         public string image { get; set; }
 
         public bool active { get; set; }

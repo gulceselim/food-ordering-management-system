@@ -266,6 +266,10 @@ namespace FoodOrderingManagementSystem.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<RestaurantCity>()
+                .Property(e => e.image)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<RestaurantCity>()
                 .Property(e => e.restaurant_name)
                 .IsUnicode(false);
 
@@ -275,10 +279,6 @@ namespace FoodOrderingManagementSystem.Models
 
             modelBuilder.Entity<RestaurantCity>()
                 .Property(e => e.restaurant_address)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<RestaurantCity>()
-                .Property(e => e.city_name)
                 .IsUnicode(false);
 
             modelBuilder.Entity<RestaurantCity>()
