@@ -14,7 +14,23 @@ namespace FoodOrderingManagementSystem.Controllers
         public ActionResult Index(int id)
         {
             List<product> products = models.products.Where(x => x.restaurant_id == id).ToList();
+            var model = models.comments.Where(x => x.restaurant_id == id).ToList();
+
+            ViewBag.restaurantID = id;  
+
+            if(model.Count != 0)
+            {
+                ViewBag.comments = model;
+            }
+            else
+            {
+                ViewBag.message = "Yorum yok!";
+                ViewBag.comments = null;
+            }
+    
             return View(products);
         }
+
+
     }
 }

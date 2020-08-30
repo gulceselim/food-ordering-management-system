@@ -57,7 +57,9 @@ namespace FoodOrderingManagementSystem.Controllers
         public ActionResult Register(user u)
         {
             u.role_id = 3;
-
+            u.order_count = 0;
+            u.user_score = 0;
+            u.comment_count = 0;
             models.users.Add(u);
             models.SaveChanges();
             return RedirectToAction("Login");

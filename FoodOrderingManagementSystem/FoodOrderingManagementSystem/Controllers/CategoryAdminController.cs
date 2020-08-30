@@ -1,6 +1,7 @@
 ﻿using FoodOrderingManagementSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -18,42 +19,42 @@ namespace FoodOrderingManagementSystem.Controllers
             return View(categories);
 
         }
+        public ActionResult CategoryAdd()
+        {
+            return View("CategoryAddOrUpdate", new category());
+        }
+
+
+        [ValidateAntiForgeryToken]
+        public ActionResult Save(category c)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("CategoryAddOrUpdate");
+            }
+            models.categories.AddOrUpdate(c);
+            models.SaveChanges();
+            return RedirectToAction("Index","CategoryAdmin");
+        }
         public ActionResult CategoryUpdate(int id)
         {
-            category category = models.categories.FirstOrDefault(x => x.category_id == id);
+            category category = models.categories.Find(id);
+            if (category == null)
+                return HttpNotFound();
 
-            return View(category);
+            return View("CategoryAddOrUpdate",category);
         }
 
-        [HttpPost]
-
-        public ActionResult CategoryUpdate(category c)
-        {
-            category category = models.categories.FirstOrDefault(x => x.category_id == c.category_id);
-            category.category_name = c.category_name;
-            models.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
         [HttpPost]
         public ActionResult CategoryDelete(int id)
         {
             category category = models.categories.FirstOrDefault(x => x.category_id == id);
+            if (category == null)
+                return HttpNotFound();
             models.categories.Remove(category);
             models.SaveChanges();
 
-            return RedirectToAction("Index");
-        }
-
-        public ActionResult CategoryAdd()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult CategoryAdd(category c)
-        {
-            models.categories.Add(c);
-            models.SaveChanges();
             return RedirectToAction("Index");
         }
     }

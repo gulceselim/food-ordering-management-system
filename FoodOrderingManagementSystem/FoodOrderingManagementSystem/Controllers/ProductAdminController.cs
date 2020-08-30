@@ -1,6 +1,7 @@
 ﻿using FoodOrderingManagementSystem.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -78,11 +79,23 @@ namespace FoodOrderingManagementSystem.Controllers
         [HttpPost]
         [Authorize(Roles = "restaurant")]
 
-        public ActionResult ProductAdd(product p)
+        public ActionResult ProductAdd(product p, HttpPostedFileBase file)
         {
-            models.products.Add(p);
-            models.SaveChanges();
-            return RedirectToAction("Index");
+            if (file != null && file.ContentLength > 0)
+            {
+                string fileName = Path.Combine(Server.MapPath("~/Content/assets_1/img/"), Path.GetFileName(file.FileName));
+                file.SaveAs(fileName);
+                string filePath = "/Content/assets_1/img/" + file.FileName;
+                p.image = filePath;
+                models.products.Add(p);
+                models.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.message = "Try again";
+                return View("ProductAdd");
+            }
         }
     }
 }
