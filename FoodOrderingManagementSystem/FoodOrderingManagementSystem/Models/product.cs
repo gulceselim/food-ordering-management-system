@@ -11,27 +11,24 @@ namespace FoodOrderingManagementSystem.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public product()
         {
+            baskets = new HashSet<basket>();
             order_product = new HashSet<order_product>();
         }
 
         [Key]
         public int product_id { get; set; }
 
-        [Required(ErrorMessage = "*The product name field is required.")]
+        [Required]
         [StringLength(50)]
-        [Display(Name = "Product Name")]
         public string product_name { get; set; }
 
-        [Required(ErrorMessage = "*The detail field is required.")]
-        [Display(Name = "Detail")]
+        [Required]
         public string details { get; set; }
 
-        [Required(ErrorMessage = "*The price field is required.")]
+        [Required]
         [StringLength(50)]
-        [Display(Name = "Price")]
         public string price { get; set; }
 
-        [Required(ErrorMessage = "*The image field is required.")]
         public string image { get; set; }
 
         public bool active { get; set; }
@@ -39,6 +36,9 @@ namespace FoodOrderingManagementSystem.Models
         public int category_id { get; set; }
 
         public int restaurant_id { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<basket> baskets { get; set; }
 
         public virtual category category { get; set; }
 

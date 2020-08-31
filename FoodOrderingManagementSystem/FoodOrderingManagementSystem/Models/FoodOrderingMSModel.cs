@@ -12,6 +12,7 @@ namespace FoodOrderingManagementSystem.Models
         {
         }
 
+        public virtual DbSet<basket> baskets { get; set; }
         public virtual DbSet<category> categories { get; set; }
         public virtual DbSet<city> cities { get; set; }
         public virtual DbSet<city_restaurant> city_restaurant { get; set; }
@@ -84,11 +85,19 @@ namespace FoodOrderingManagementSystem.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<payment>()
+                .Property(e => e.card_name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<payment>()
                 .Property(e => e.card_number)
                 .IsUnicode(false);
 
             modelBuilder.Entity<payment>()
-                .Property(e => e.card_date)
+                .Property(e => e.card_month)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<payment>()
+                .Property(e => e.card_year)
                 .IsUnicode(false);
 
             modelBuilder.Entity<payment>()
@@ -110,6 +119,11 @@ namespace FoodOrderingManagementSystem.Models
             modelBuilder.Entity<product>()
                 .Property(e => e.image)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<product>()
+                .HasMany(e => e.baskets)
+                .WithRequired(e => e.product)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<product>()
                 .HasMany(e => e.order_product)

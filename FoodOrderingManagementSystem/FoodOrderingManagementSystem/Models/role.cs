@@ -18,9 +18,8 @@ namespace FoodOrderingManagementSystem.Models
         [Key]
         public int role_id { get; set; }
 
-        [Required(ErrorMessage = "*The role field is required.")]
+        [Required]
         [StringLength(50)]
-        [Display(Name = "Role Name")]
         public string role_name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

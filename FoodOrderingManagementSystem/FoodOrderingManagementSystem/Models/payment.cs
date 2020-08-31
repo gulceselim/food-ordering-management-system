@@ -19,11 +19,19 @@ namespace FoodOrderingManagementSystem.Models
 
         [Required]
         [StringLength(50)]
+        public string card_name { get; set; }
+
+        [Required]
+        [StringLength(50)]
         public string card_number { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string card_date { get; set; }
+        public string card_month { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string card_year { get; set; }
 
         [Required]
         [StringLength(50)]
