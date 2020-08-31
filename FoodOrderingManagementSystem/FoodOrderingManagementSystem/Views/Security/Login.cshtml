@@ -124,17 +124,17 @@
 
                                             <div class="col-12 form-group">
                                                 <label>Username</label>
-                                                <input type="text" name="username" class="form-control" required>
+                                                <input type="text" pattern=".{4,}" title="Kullancı adı en az 4 karakterli olmalıdır." name="username" class="form-control" required>
                                             </div>
 
                                             <div class="col-12 form-group">
                                                 <label>Password</label>
-                                                <input type="password" name="user_password" class="form-control" required>
+                                                <input type="password" pattern=".{8,}" title="Şifre en az 8 karakterli olmalıdır." name="user_password" class="form-control" required>
                                             </div>
 
                                             <div class="col-12 form-group">
                                                 <label>Email</label>
-                                                <input type="email" name="user_email" class="form-control" required>
+                                                <input type="email" title="Mail formatına uygun değil." name="user_email" class="form-control" required>
                                             </div>
 
 

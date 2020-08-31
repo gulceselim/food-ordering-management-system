@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@using FoodOrderingManagementSystem.Models
+
+<div class="row justify-content-center">
+    <div class="col-lg-11">
+        <div class="card shadow-sm">
+            <div class="card-header">
+                <h4 class="mb-0">Profil</h4>
+            </div>
+            <div class="card-body">
+
+                <div class="form-widget">
+
+                    <div class="form-result"></div>
+
+                    <div class="form-process">
+                        <div class="css3-spinner">
+                            <div class="css3-spinner-double-bounce1"></div>
+                            <div class="css3-spinner-double-bounce2"></div>
+                        </div>
+                    </div>
+
+                    <form class="mb-0" role="form" action="/ProfilUser/UserUpdate" method="post">
+                        <input type="hidden" name="users_id" value="@Model.users_id" />
+                        <div class="row">
+
+                            <div class="col-12 bottommargin-sm">
+                                <label for="template-contactform-name">Kullanıcı Adı<small class="text-danger">*</small></label>
+                                <input type="text" id="template-contactform-name" name="username" value="@Model.username" class="form-control required" placeholder="İsminizi giriniz..." required>
+                            </div>
+
+                            <div class="col-12 bottommargin-sm">
+                                <label for="template-contactform-email">Mail Adres<small class="text-danger">*</small></label>
+                                <input type="email" name="user_email" id="template-contactform-email" class="form-control required" value="@Model.user_email" placeholder="user@company.com" required>
+                            </div>
+
+                            <div class="col-12 bottommargin-sm">
+                                <label for="template-contactform-password">Telefon Numarası<small class="text-danger">*</small></label>
+                                <input type="tel" id="template-contactform-password" name="phone_number" value="@Model.phone_number" class="form-control" placeholder="05XXXXXXXXX" required>
+                            </div>
+
+                            <div class="col-12 bottommargin-sm">
+                                <label for="template-contactform-default-select">Şehir<small class="text-danger">*</small></label>
+                                <select name="city_id" class="form-control valid" id="template-contactform-default-select" required>
+                                    <option value="@Model.city.city_id" selected>@Model.city.city_name</option>
+                                    @foreach (city cities in ViewBag.cities)
+                                    {
+                                        <option value="@cities.city_id">@cities.city_name</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-12 bottommargin-sm">
+                                <label for="template-contactform-password">Adres<small class="text-danger">*</small></label>
+                                <input type="text" id="template-contactform-password" name="user_address" value="@Model.user_address" class="form-control" placeholder="Adresinizi giriniz..." required>
+                            </div>
+
+                            <div class="col-12">
+                                <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm my-3">Kaydet</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.payment != null)
+{
+    <div class="row justify-content-center py-md-5">
+        <div class="col-lg-11">
+            <div class="card shadow-sm">
+                <div class="card-header">
+                    <h4 class="mb-0">Kredi Kartı</h4>
+                </div>
+                <div class="card-body">
+
+                    <div class="form-widget">
+
+                        <div class="form-result"></div>
+
+                        <div class="form-process">
+                            <div class="css3-spinner">
+                                <div class="css3-spinner-double-bounce1"></div>
+                                <div class="css3-spinner-double-bounce2"></div>
+                            </div>
+                        </div>
+
+                        <form class="mb-0" id="template-contactform" name="template-contactform" action="include/form.php" method="post" enctype="multipart/form-data" novalidate="novalidate">
+
+                            <div class="col-12 bottommargin-sm">
+                                <label for="username">Kart Üzerinde Yazan İsim<small class="text-danger">*</small></label>
+                                <input type="text" value="@Model.payment.card_name" placeholder="Selim Gülce" disabled class="form-control">
+                            </div>
+                            <div class="col-12 bottommargin-sm">
+                                <label for="cardNumber">Kart Numarası<small class="text-danger">*</small></label>
+                                <div class="input-group">
+                                    <input type="text" value="@Model.payment.card_number" placeholder="Kart numarası" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label><span class="hidden-xs">Tarih<small class="text-danger">*</small></span></label>
+                                        <div class="input-group">
+                                            <input type="number" placeholder="MM" value="@Model.payment.card_month" class="form-control" disabled>
+                                            <input type="number" placeholder="YY" value="@Model.payment.card_year" class="form-control" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group mb-4">
+                                        <label data-toggle="tooltip" title="" data-original-title="Three-digits code on the back of your card">
+                                            CVV
+                                            <small class="text-danger">*</small>
+                                            <i class="fa fa-question-circle"></i>
+                                        </label>
+                                        <input type="text" value="@Model.payment.card_cvv" disabled class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#" class="subscribe btn btn-danger btn-block rounded-pill shadow-sm payDel" data-payid="@Model.payment.payment_id">Sil</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row justify-content-center ml-2 mt-5">
+        <div class="col-lg-11">
+            <a href="/PaymentUser/PaymentAdd" class="btn btn-primary" accesskey="">Kredi Kartı Ekle</a>
+        </div>
+    </div>
+}
+
+@section script{
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+
+    <script>
+        $(".payDel").click(function () {
+            swal("Are you sure you want to do this?", {
+                buttons: ["No", "Yes"],
+            }).then((result) => {
+                if (result) {
+                    var payID = $(this).data("payid");
+
+                    $.ajax(
+                        {
+                            type: "POST",
+                            url: "/PaymentUser/PaymentDelete/" + payID,
+                            success: function () {
+                                swal({
+                                    title: "İtem Deleted!",
+                                    text: "You clicked the button!",
+                                    icon: "success",
+                                    button: "OK",
+                                }).then(() => {
+                                    window.location.replace("/ProfilUser/Index");
+                                });
+                            },
+                            error: function () {
+                                swal("Your product is safe!");
+                            }
+                        });
+                }
+                else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
+        });
+
+
+    </script>
+
+}

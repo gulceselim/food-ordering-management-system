@@ -26,10 +26,7 @@
                                     <th>Price</th>
                                     <th>Shipper Name</th>
                                     <th>Details</th>
-                                    @if (User.IsInRole("restaurant"))
-                                    {
-                                        <th>Actions</th>
-                                    }
+                                   
                                     </tr>
                             </thead>
                             <tbody>
@@ -45,12 +42,7 @@
                                         <td>@order.price</td>
                                         <td>@order.first_name @order.last_name</td>
                                         <td>@order.order_details</td>
-                                        @if (User.IsInRole("restaurant"))
-                                        {
-                                            <td class="actions">
-                                                <a href="#" class="btn btn-modern btn-rounded btn btn-danger orderDel" data-orderid="@order.order_id">Delete</a>
-                                            </td>
-                                        }
+                                        
                                         </tr>
                                         }
                                     }
