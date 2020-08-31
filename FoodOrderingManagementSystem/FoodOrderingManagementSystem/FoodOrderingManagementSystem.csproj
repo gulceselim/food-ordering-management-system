@@ -6646,7 +6646,9 @@
     <Compile Include="Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\HomeUserController.cs" />
     <Compile Include="Controllers\OrderAdminController.cs" />
+    <Compile Include="Controllers\PaymentUserController.cs" />
     <Compile Include="Controllers\ProductAdminController.cs" />
+    <Compile Include="Controllers\ProfilUserController.cs" />
     <Compile Include="Controllers\RestaurantAdminController.cs" />
     <Compile Include="Controllers\RestaurantUserController.cs" />
     <Compile Include="Controllers\RoleAdminController.cs" />
@@ -6656,6 +6658,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\basket.cs" />
     <Compile Include="Models\category.cs" />
     <Compile Include="Models\city.cs" />
     <Compile Include="Models\city_restaurant.cs" />
@@ -6708,6 +6711,9 @@
     <Content Include="Views\HomeUser\Index.cshtml" />
     <Content Include="Views\CategoryUser\Index.cshtml" />
     <Content Include="Views\RestaurantAdmin\RestaurantAdd.cshtml" />
+    <Content Include="Views\ProfilUser\Index.cshtml" />
+    <Content Include="Views\PaymentUser\PaymentAdd.cshtml" />
+    <Content Include="Views\BasketUser\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6718,7 +6724,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\BasketUser\" />
     <Folder Include="Views\CommentUser\" />
   </ItemGroup>
   <ItemGroup>
