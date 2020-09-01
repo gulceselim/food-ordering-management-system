@@ -12,36 +12,20 @@ namespace FoodOrderingManagementSystem.Controllers
 
         FoodOrderingMSModel models = new FoodOrderingMSModel();
         // GET: OrderAdmin
-        [Authorize(Roles = "restaurant,admin")]
+        [Authorize(Roles = "restaurant")]
 
         public ActionResult Index()
         {
-            if (User.IsInRole("restaurant"))
-            {
-                ViewBag.restaurants = models.restaurants.Where(x => x.username == User.Identity.Name).ToList();
-            }
-            else
-            {
-                ViewBag.restaurants = models.restaurants.ToList();
-            }
+            ViewBag.restaurants = models.restaurants.Where(x => x.username == User.Identity.Name).ToList();
 
-            List<OrderProduct> orders = models.OrderProducts.ToList();
+            restaurant restaurant = models.restaurants.FirstOrDefault(x => x.username == User.Identity.Name);
+
+            List<order_product> order_Products = models.order_product.Where(x => x.product.restaurant_id == restaurant.restaurant_id).ToList();
             
-            return View(orders);
+            return View(order_Products);
         }
 
-        [HttpPost]
-        [Authorize(Roles = "restaurant")]
 
-        public ActionResult OrderDelete(int id)
-        {
-            order order = models.orders.FirstOrDefault(x => x.order_id == id);
-
-            models.orders.Remove(order);
-            models.SaveChanges();
-            return RedirectToAction("Index");
-
-        }
 
     }
 }

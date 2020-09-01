@@ -7,13 +7,15 @@ using System.Web.Mvc;
 
 namespace FoodOrderingManagementSystem.Controllers
 {
+    [Authorize(Roles = "user")]
+
     public class BasketUserController : Controller
     {
         FoodOrderingMSModel models = new FoodOrderingMSModel();
         int totalPrice = 0;
         public ActionResult Index()
         {
-            List<basket> baskets = models.baskets.ToList();
+            List<basket> baskets = models.baskets.Where(x => x.user.username == User.Identity.Name).ToList();
             foreach (var item in baskets)
             {
                 totalPrice += item.total_price;
@@ -26,6 +28,8 @@ namespace FoodOrderingManagementSystem.Controllers
         public ActionResult BasketAdd(int id, basket b)
         {
             product product = models.products.FirstOrDefault(x => x.product_id == id);
+            user user = models.users.FirstOrDefault(x => x.username == User.Identity.Name);
+            b.user_id = user.users_id;
             b.product_id = product.product_id;
             b.total_price = Convert.ToInt32(product.price);
             models.baskets.Add(b);
@@ -34,8 +38,6 @@ namespace FoodOrderingManagementSystem.Controllers
         }
 
         [HttpPost]
-
-
         public ActionResult BasketDelete(int id)
         {
             basket basket = models.baskets.FirstOrDefault(x => x.basket_id == id);
