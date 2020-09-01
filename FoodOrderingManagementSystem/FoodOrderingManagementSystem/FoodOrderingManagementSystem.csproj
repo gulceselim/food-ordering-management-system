@@ -6646,6 +6646,7 @@
     <Compile Include="Controllers\HomeAdminController.cs" />
     <Compile Include="Controllers\HomeUserController.cs" />
     <Compile Include="Controllers\OrderAdminController.cs" />
+    <Compile Include="Controllers\OrderUserController.cs" />
     <Compile Include="Controllers\PaymentUserController.cs" />
     <Compile Include="Controllers\ProductAdminController.cs" />
     <Compile Include="Controllers\ProfilUserController.cs" />
@@ -6714,6 +6715,7 @@
     <Content Include="Views\ProfilUser\Index.cshtml" />
     <Content Include="Views\PaymentUser\PaymentAdd.cshtml" />
     <Content Include="Views\BasketUser\Index.cshtml" />
+    <Content Include="Views\OrderUser\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
