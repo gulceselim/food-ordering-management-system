@@ -51,14 +51,15 @@
                     <p>Shippers</p>
                 </a>
             </li>
-
-            <li class="nav-item ">
-                <a class="nav-link" href="/OrderAdmin/Index">
-                    <i class="material-icons">local_grocery_store</i>
-                    <p>Orders</p>
-                </a>
-            </li>
-
+            @if (User.IsInRole("restaurant"))
+            {
+                <li class="nav-item ">
+                    <a class="nav-link" href="/OrderAdmin/Index">
+                        <i class="material-icons">local_grocery_store</i>
+                        <p>Orders</p>
+                    </a>
+                </li>
+            }
             <li class="nav-item ">
                 <a class="nav-link" href="/CommentAdmin/Index">
                     <i class="material-icons">comment</i>

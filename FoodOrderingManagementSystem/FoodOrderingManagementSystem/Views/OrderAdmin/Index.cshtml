@@ -4,7 +4,7 @@
 }
 
 @using FoodOrderingManagementSystem.Models
-@model List<OrderProduct>
+@model List<order_product>
 
 @foreach (var restaurant in ViewBag.restaurants)
 {
@@ -24,7 +24,7 @@
                                     <th>Product Name</th>
                                     <th>Order Type</th>
                                     <th>Price</th>
-                                    <th>Shipper Name</th>
+                                    <th>Time</th>
                                     <th>Details</th>
                                    
                                     </tr>
@@ -33,15 +33,15 @@
 
                                 @foreach (var order in Model)
                                 {
-                                    if (restaurant.restaurant_name == order.restaurant_name)
+                                    if (restaurant.restaurant_id == order.product.restaurant_id)
                                     {
                                     <tr class="Search">
-                                        <td>@order.uFirstName @order.uLastName</td>
-                                        <td>@order.product_name</td>
-                                        <td>@order.order_type</td>
-                                        <td>@order.price</td>
-                                        <td>@order.first_name @order.last_name</td>
-                                        <td>@order.order_details</td>
+                                        <td>@order.order.user.first_name @order.order.user.last_name</td>
+                                        <td>@order.product.product_name</td>
+                                        <td>@order.order.order_type</td>
+                                        <td>@order.order.price</td>
+                                        <td>@order.order.order_time</td>
+                                        <td>@order.order.order_details</td>
                                         
                                         </tr>
                                         }

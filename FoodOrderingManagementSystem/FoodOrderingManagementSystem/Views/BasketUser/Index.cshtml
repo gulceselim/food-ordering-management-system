@@ -1,7 +1,4 @@
 ﻿
-@{ 
-    int totalPrice = 0;
-}
 
 @using FoodOrderingManagementSystem.Models
 @model List<basket>
@@ -46,23 +43,43 @@
                                             @item.product.product_name
                                         </td>
                                         <td>
-                                            ₺@item.product.price 
+                                            ₺@item.product.price
                                         </td>
                                         <td class="actions">
                                             <a href="#" class="btn btn-modern btn-rounded btn btn-danger basketDel" data-basketid="@item.basket_id">Delete</a>
                                         </td>
                                     </tr>
                                 }
-                            <tr>
-                                <td></td>
-                                <td>Toplam Fiyat:</td>
-                                <td>₺@ViewBag.totalPrice</td>
-                                <td class="actions">
-                                    <a href="#" class="btn btn-modern btn-rounded btn-success mb-2">Siparişi Tamamla</a>
-                                </td>
-                            </tr>
+
+                                <tr>
+                                    <td></td>
+                                    <td>Toplam Fiyat:</td>
+                                    <td>₺@ViewBag.totalPrice</td>
+                                </tr>
                             </tbody>
                         </table>
+                        <form class="mb-0" role="form" action="/OrderUser/OrderAdd" method="post">
+                            <div class="row">
+
+                                <input type="hidden" id="template-contactform-name" name="price" value="@ViewBag.totalPrice" class="form-control" />
+
+                                <div class="col-12 bottommargin-sm">
+                                    <label for="template-contactform-password">Ödeme Tipi<small class="text-danger">*</small></label>
+                                    <select name="order_type">
+                                        <option>Nakit</option>
+                                        <option>Kart</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12 bottommargin-sm">
+                                    <label for="template-contactform-password">Açıklama<small class="text-danger">*</small></label>
+                                    <input type="text" id="template-contactform-password" name="order_details" class="form-control" required />
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm my-3">Siparişi Tamamla</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 

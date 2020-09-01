@@ -6,29 +6,32 @@
 
 @foreach (var product in Model)
 {
-        <div class="col-sm-3 product Search">
-            <span class="product-thumb-info border-0">
-                <a href="#" class="add-to-cart-product bg-color-primary">
-                    <span class="small">@product.details</span>
-                </a>
+    <div class="col-sm-3 product Search">
+        <span class="product-thumb-info border-0">
+            <a href="#" class="add-to-cart-product bg-color-primary">
+                <span class="small">@product.details</span>
+            </a>
+            <a href="#">
+                <span class="product-thumb-info-image">
+                    <img alt="" width="100" height="100" src="@product.image">
+                </span>
+            </a>
+            <span class="#">
                 <a href="#">
-                    <span class="product-thumb-info-image">
-                        <img alt="" width="100" height="100" src="@product.image">
+                    <h4 class="text-4 text-primary">@product.product_name</h4>
+                    <span class="price">
+                        <ins><span class="amount text-dark font-weight-semibold">₺@product.price</span></ins>
                     </span>
                 </a>
-                <span class="#">
-                    <a href="#">
-                        <h4 class="text-4 text-primary">@product.product_name</h4>
-                        <span class="price">
-                            <ins><span class="amount text-dark font-weight-semibold">₺@product.price</span></ins>
-                        </span>
-                    </a>
-                </span>
             </span>
+        </span>
+        @if (User.IsInRole("user"))
+        {
             <form class="" action="/BasketUser/BasketAdd/@product.product_id" method="post">
                 <button type="submit" class="btn btn-primary mt-2 ml-2">Sepete Ekle</button>
             </form>
-        </div>
+        }
+    </div>
 }
         <div class="container py-4">
 

@@ -5,7 +5,7 @@
     List<category> categories = models.categories.ToList();
     List<restaurant> restaurants = models.restaurants.ToList();
     List<order_product> orderProducts = models.order_product.ToList();
-    List<basket> baskets = models.baskets.ToList();
+    List<basket> baskets = models.baskets.Where(x => x.user.username == HttpContext.Current.User.Identity.Name).ToList();
     int count = baskets.Count;
 }
 <!DOCTYPE html>
@@ -76,21 +76,23 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="header-column justify-content-end">
-                            <div class="header-row">
-                                <div class="header-nav-features">
-                                    <div class="header-nav-feature header-nav-features-cart header-nav-features-cart-big d-inline-flex ml-2" data-sticky-header-style="{'minResolution': 991}" data-sticky-header-style-active="{'top': '78px'}" data-sticky-header-style-deactive="{'top': '0'}">
-                                        <a href="/BasketUser/Index">
-                                            <img src="~/Content/assets_2/img/icons/icon-cart-big.svg" height="34" alt="" class="header-nav-top-icon-img">
-                                            <span class="cart-info">
-                                                <span class="cart-qty">@count</span>
-                                            </span>
-                                        </a>
+                        @if (User.IsInRole("user"))
+                        {
+                            <div class="header-column justify-content-end">
+                                <div class="header-row">
+                                    <div class="header-nav-features">
+                                        <div class="header-nav-feature header-nav-features-cart header-nav-features-cart-big d-inline-flex ml-2" data-sticky-header-style="{'minResolution': 991}" data-sticky-header-style-active="{'top': '78px'}" data-sticky-header-style-deactive="{'top': '0'}">
+                                            <a href="/BasketUser/Index">
+                                                <img src="~/Content/assets_2/img/icons/icon-cart-big.svg" height="34" alt="" class="header-nav-top-icon-img">
+                                                <span class="cart-info">
+                                                    <span class="cart-qty">@count</span>
+                                                </span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     </div>
                 </div>
                 <div class="container">
@@ -176,6 +178,17 @@
                                     <li>
                                         <a href="/ProfilUser/Index">
                                             Profil
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            }
+                            @if (User.IsInRole("user"))
+                            {
+                                <ul class="nav nav-pills">
+                                    <li>
+                                        <a href="/OrderUser/Index">
+                                            Siparişlerim
                                         </a>
                                     </li>
 

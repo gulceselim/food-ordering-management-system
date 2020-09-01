@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@using FoodOrderingManagementSystem.Models
+@model List<order_product>
+
+
+@if (Model.Count != 0)
+{
+    <div class="container py-2">
+
+        <div class="row">
+            <div class="col">
+
+                <div class="row">
+                    <div class="col pb-3">
+
+                        <h4>Siparişlerim</h4>
+                        @foreach (var orders in ViewBag.orders)
+                        {
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Ürün Foto
+                                        </th>
+                                        <th>
+                                            Ürün İsmi
+                                        </th>
+                                        <th>
+                                            Restoran
+                                        </th>
+                                        <th>
+                                            Fiyat
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        if (orders.order_time == item.order.order_time)
+                                        {
+
+                                            <tr>
+                                                <td>
+                                                    <img src="@item.product.image" width="50" height="50" alt="Ürün" />
+                                                </td>
+                                                <td>
+                                                    @item.product.product_name
+                                                </td>
+                                                <td>
+                                                    @item.product.restaurant.restaurant_name
+                                                </td>
+                                                <td>
+                                                    ₺@item.product.price
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    }
+                                    @foreach (var item in Model)
+                                    {
+                                        if (orders.order_time == item.order.order_time)
+                                        {
+                                            <tr>
+                                                <td class="font-weight-bold">Verilme Zamanı:</td>
+                                                <td>@item.order.order_time</td>
+                                                <td class="font-weight-bold">Toplam Fiyat:</td>
+                                                <td>₺@item.order.price</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="font-weight-bold">Açıklama:</td>
+                                                <td>@item.order.order_details</td>
+                                                <td class="font-weight-bold">Ödeme Tipi:</td>
+                                                <td>@item.order.order_type</td>
+                                            </tr>
+                                            break;
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+}
+else
+{
+    <h4> Hemen sipariş verin!</h4>
+}
