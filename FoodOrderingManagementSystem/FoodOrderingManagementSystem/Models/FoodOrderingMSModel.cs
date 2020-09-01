@@ -67,6 +67,10 @@ namespace FoodOrderingManagementSystem.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<order>()
+                .Property(e => e.order_address)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<order>()
                 .Property(e => e.order_details)
                 .IsUnicode(false);
 
@@ -232,6 +236,12 @@ namespace FoodOrderingManagementSystem.Models
             modelBuilder.Entity<user>()
                 .Property(e => e.user_address)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<user>()
+                .HasMany(e => e.baskets)
+                .WithRequired(e => e.user)
+                .HasForeignKey(e => e.user_id)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<user>()
                 .HasMany(e => e.comments)

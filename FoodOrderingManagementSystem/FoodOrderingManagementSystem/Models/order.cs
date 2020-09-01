@@ -22,6 +22,12 @@ namespace FoodOrderingManagementSystem.Models
         [StringLength(50)]
         public string order_type { get; set; }
 
+        public DateTime order_time { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string order_address { get; set; }
+
         [Required]
         public string order_details { get; set; }
 

@@ -11,6 +11,7 @@ namespace FoodOrderingManagementSystem.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public user()
         {
+            baskets = new HashSet<basket>();
             comments = new HashSet<comment>();
             orders = new HashSet<order>();
         }
@@ -56,6 +57,9 @@ namespace FoodOrderingManagementSystem.Models
         public int city_id { get; set; }
 
         public int? payment_id { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<basket> baskets { get; set; }
 
         public virtual city city { get; set; }
 

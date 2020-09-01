@@ -16,6 +16,10 @@ namespace FoodOrderingManagementSystem.Models
 
         public int product_id { get; set; }
 
+        public int user_id { get; set; }
+
         public virtual product product { get; set; }
+
+        public virtual user user { get; set; }
     }
 }
