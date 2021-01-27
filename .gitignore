@@ -19,7 +19,7 @@ _UpgradeReport_Files/
 ###############
 bin/
 obj/
-FoodOrderingManagementSystem/packages/
+FoodOrderingManagementSystem/packages/*
 ###################
 # Web publish log #
 ###################
