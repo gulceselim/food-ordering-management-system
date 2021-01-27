@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewBag.Title = "Products";
+}
+
+@using FoodOrderingManagementSystem.Models
+@model IEnumerable<FoodOrderingManagementSystem.Models.product>
+
+@foreach (restaurant restaurant in ViewBag.restaurants)
+{
+    <div class="row">
+        <div class="col-md-12 Search">
+            <div class="card">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">
+                        @restaurant.restaurant_name
+                        <label></label>
+                        <label></label>
+                        <label></label>
+                        @if (User.IsInRole("restaurant"))
+                        {
+                            <a href="/ProductAdmin/ProductAdd/@restaurant.restaurant_id" class="btn btn-primary" accesskey="">Add<i class="material-icons">add</i></a>
+                        }
+                    </h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Product Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Detail</th>
+                                    <th>Active</th>
+                                    @if (User.IsInRole("restaurant"))
+                                    {
+                                        <th>Actions</th>
+                                    }
+                                </tr>
+
+                            </thead>
+                            <tbody>
+
+                                @foreach (var product in Model)
+                                {
+                                    if (restaurant.restaurant_id == product.restaurant_id)
+                                    {
+                                        <tr class="Search">
+                                            <td><img src="@product.image" width="100" height="100" alt="Product Image" /></td>
+
+                                            <td>@product.product_name</td>
+                                            <td>@product.category.category_name</td>
+                                            <td>@product.price</td>
+                                            <td>@product.details</td>
+                                            <td>
+                                                @if (product.active == true)
+                                                {
+                                                    <button class="btn btn-success">Active</button>
+                                                }
+                                                else
+                                                {
+                                                    <button class="btn btn-danger">Passive</button>
+                                                }
+                                            </td>
+
+                                            @if (User.IsInRole("restaurant"))
+                                            {
+                                                <td class="actions">
+                                                    <a href="/ProductAdmin/ProductUpdate/@product.product_id" class="btn btn-modern btn-rounded btn-success mb-2">Update</a>
+                                                    <a href="#" class="btn btn-modern btn-rounded btn btn-danger prodDel" data-prodid="@product.product_id">Delete</a>
+                                                </td>
+                                            }
+                                        </tr>
+                                    }
+
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+
+
+
+@section scripts{
+
+    <script>
+        $(".prodDel").click(function () {
+            swal("Are you sure you want to do this?", {
+                buttons: ["No", "Yes"],
+            }).then((result) => {
+                if (result) {
+                    var prodID = $(this).data("prodid");
+
+                    $.ajax(
+                        {
+                            type: "POST",
+                            url: "/ProductAdmin/ProductDelete/" + prodID,
+                            success: function () {
+                                swal({
+                                    title: "İtem Deleted!",
+                                    text: "You clicked the button!",
+                                    icon: "success",
+                                    button: "OK",
+                                }).then(() => {
+                                    window.location.replace("/ProductAdmin/Index");
+                                });
+                            },
+                            error: function () {
+                                swal("Your product is safe!");
+                            }
+                        });
+                }
+                else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
+        });
+
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            function Contains(text_one, text_two) {
+                if (text_one.indexOf(text_two) != -1)
+                    return true;
+            }
+            $("#Search").keyup(function () {
+                var searchText = $("#Search").val();
+                $(".Search").each(function () {
+                    if (!Contains($(this).text(), searchText)) {
+                        $(this).hide();
+                    }
+                    else {
+                        $(this).show();
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+}

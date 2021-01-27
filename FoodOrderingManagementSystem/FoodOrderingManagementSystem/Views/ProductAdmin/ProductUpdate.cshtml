@@ -1,0 +1,75 @@
+﻿@{
+    ViewBag.Title = "Product Update";
+}
+@using FoodOrderingManagementSystem.Models
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Edit Profile</h4>
+                <p class="card-category">Complete your profile</p>
+            </div>
+            <label> </label>
+            <label> </label>
+            <label> </label>
+            <label> </label>
+            <div class="card-body">
+                <form action="/ProductAdmin/ProductUpdate" method="post" role="form">
+                    <input type="hidden" name="product_id" value="@Model.product_id" />
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Product Name</label>
+                                <input value="@Model.product_name" type="text" class="form-control" name="product_name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label class="">Category</label>
+                                <select name="category_id">
+                                    @foreach (category categories in ViewBag.categories)
+                                    {
+                                        <option value="@categories.category_id">@categories.category_name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <label> </label>
+                    <label> </label>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group bmd-form-group">
+                                <span> </span><label class="bmd-label-floating">Details</label>
+                                <input value="@Model.details" type="text" class="form-control" name="details" required>
+                            </div>
+                        </div>
+                    </div>
+                    <label> </label>
+                    <label> </label>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Price</label>
+                                <input value="@Model.price" type="number" class="form-control" name="price" required>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group bmd-form-group">
+                                <label class="">Active</label>
+                                <select name="active">
+                                    <option >True</option>
+                                    <option >False</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">Update Restaurant</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

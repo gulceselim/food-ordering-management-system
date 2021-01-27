@@ -1,0 +1,319 @@
+﻿@using FoodOrderingManagementSystem.Models
+@{
+    Layout = null;
+    FoodOrderingMSModel models = new FoodOrderingMSModel();
+    List<category> categories = models.categories.ToList();
+    List<restaurant> restaurants = models.restaurants.ToList();
+    List<order_product> orderProducts = models.order_product.ToList();
+    List<basket> baskets = models.baskets.Where(x => x.user.username == HttpContext.Current.User.Identity.Name).ToList();
+    int count = baskets.Count;
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>@ViewBag.title</title>
+
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Porto - Responsive HTML5 Template">
+    <meta name="author" content="okler.net">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="~/Content/assets_2/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/assets_2/vendor/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/Content/assets_2/vendor/animate/animate.min.css">
+    <link rel="stylesheet" href="~/Content/assets_2/vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="~/Content/assets_2/vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/assets_2/vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Content/assets_2/vendor/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet" href="~/Content/assets_2/vendor/bootstrap-star-rating/css/star-rating.min.css">
+    <link rel="stylesheet" href="~/Content/assets_2/vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="~/Content/assets_2/css/theme.css">
+    <link rel="stylesheet" href="~/Content/assets_2/css/theme-elements.css">
+    <link rel="stylesheet" href="~/Content/assets_2/css/theme-blog.css">
+    <link rel="stylesheet" href="~/Content/assets_2/css/theme-shop.css">
+
+    <!-- Demo CSS -->
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="~/Content/assets_2/css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="~/Content/assets_2/css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="~/Content/assets_2/vendor/modernizr/modernizr.min.js"></script>
+
+</head>
+<body>
+
+    <div class="body">
+        <header id="header" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 135, 'stickySetTop': '-135px', 'stickyChangeLogo': true}">
+            <div class="header-body border-color-primary border-bottom-0 box-shadow-none" data-sticky-header-style="{'minResolution': 0}" data-sticky-header-style-active="{'background-color': '#f7f7f7'}" data-sticky-header-style-deactive="{'background-color': '#FFF'}">
+                <div class="header-container container">
+                    <div class="header-row py-2">
+                        <div class="header-column">
+                            <div class="header-row">
+                                <div class="header-logo">
+                                    <a href="/HomeUser/Index">
+                                        <img alt="Porto" width="150" height="95" data-sticky-width="82" data-sticky-height="40" data-sticky-top="84" src="~/Content/assets_2/img/project-logo.png">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        @if (User.IsInRole("user"))
+                        {
+                            <div class="header-column justify-content-end">
+                                <div class="header-row">
+                                    <div class="header-nav-features">
+                                        <div class="header-nav-feature header-nav-features-cart header-nav-features-cart-big d-inline-flex ml-2" data-sticky-header-style="{'minResolution': 991}" data-sticky-header-style-active="{'top': '78px'}" data-sticky-header-style-deactive="{'top': '0'}">
+                                            <a href="/BasketUser/Index">
+                                                <img src="~/Content/assets_2/img/icons/icon-cart-big.svg" height="34" alt="" class="header-nav-top-icon-img">
+                                                <span class="cart-info">
+                                                    <span class="cart-qty">@count</span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="header-nav-bar bg-color-light-scale-1 mb-3 px-3 px-lg-0">
+                        <div class="header-row">
+                            <div class="header-column">
+                                <div class="header-row justify-content-end">
+                                    <div class="header-nav header-nav-links justify-content-start" data-sticky-header-style="{'minResolution': 991}" data-sticky-header-style-active="{'margin-left': '150px'}" data-sticky-header-style-deactive="{'margin-left': '0'}">
+                                        <div class="header-nav-main header-nav-main-square header-nav-main-dropdown-no-borders header-nav-main-dropdown-arrow header-nav-main-effect-3 header-nav-main-sub-effect-1">
+                                            <nav class="collapse">
+                                                <ul class="nav nav-pills" id="mainNav">
+                                                    <li class="dropdown">
+                                                        <a class="dropdown-item dropdown-toggle" href="/HomeUser/Index">
+                                                            Anasayfa
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main nav">
+                                            <i class="fas fa-bars"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div role="main" class="main shop py-4">
+
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-3">
+                        <aside class="sidebar">
+                            <form action="page-search-results.html" method="get">
+                                <div class="input-group mb-3 pb-1">
+                                    <input class="form-control text-1" placeholder="Arama..." name="s" id="Search" type="text">
+                                    <span class="input-group-append">
+                                        <button type="submit" class="btn btn-dark text-1 p-2"><i class="fas fa-search m-2"></i></button>
+                                    </span>
+                                </div>
+                            </form>
+                            <h5 class="font-weight-bold pt-3">Restoranlar</h5>
+                            <ul class="nav nav-list flex-column">
+                                @foreach (var restaurant in restaurants)
+                                {
+                                    <li class="nav-item"><a class="nav-link" href="/RestaurantUser/Index/@restaurant.restaurant_id">@restaurant.restaurant_name</a></li>
+                                }
+                            </ul>
+                            <h5 class="font-weight-bold pt-5">Kategoriler</h5>
+                            <div class="mb-3 pb-1">
+                                @foreach (var category in categories)
+                                {
+                                    <a href="/CategoryUser/Index/@category.category_id"><span class="badge badge-dark badge-sm badge-pill text-uppercase px-2 py-1 mr-1">@category.category_name</span></a>
+                                }
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-6">
+
+                        <div class="masonry-loader masonry-loader-showing">
+                            <div class="row products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
+                                @RenderBody()
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <aside class="sidebar">
+                            <ul class="nav nav-pills">
+                                <li>
+                                    <p>
+                                        Hoşgeldin @HttpContext.Current.User.Identity.Name !
+                                    </p>
+                                </li>
+                            </ul>
+                            @if (User.IsInRole("user"))
+                            {
+                                <ul class="nav nav-pills">
+                                    <li>
+                                        <a href="/ProfilUser/Index">
+                                            Profil
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            }
+                            @if (User.IsInRole("user"))
+                            {
+                                <ul class="nav nav-pills">
+                                    <li>
+                                        <a href="/OrderUser/Index">
+                                            Siparişlerim
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            }
+                            <ul class="nav nav-pills">
+                                <li>
+                                    <a href="/Security/Logout">
+                                        Çıkış Yap
+                                    </a>
+                                </li>
+
+                            </ul>
+                            @if (User.IsInRole("admin") || User.IsInRole("restaurant"))
+                            {
+                                <ul class="nav nav-pills">
+                                    <li>
+                                        <a href="/HomeAdmin/Index">
+                                            Management Page
+                                        </a>
+                                    </li>
+                                </ul>
+                            }
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+            <div class="container mt-4 pt-2 pb-5 footer-top-light-border">
+                <div class="row py-4">
+                    <div class="col-md-3 text-center text-md-left">
+
+                    </div>
+                    <div class="col-md-9 text-center text-md-left">
+                        <div class="row">
+                            <div class="col-md-7 col-lg-5 mb-0">
+                                <h5 class="text-4 text-color-light mb-3 mt-4 mt-lg-0">MY ACCOUNT</h5>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p class="mb-1"><a href="#" class="text-3 link-hover-style-1">About us</a></p>
+                                        <p class="mb-1"><a href="#" class="text-3 link-hover-style-1">Contact Us</a></p>
+                                        <p class="mb-1"><a href="#" class="text-3 link-hover-style-1">My account</a></p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <p class="mb-1"><a href="#" class="text-3 link-hover-style-1">Orders history</a></p>
+                                        <p class="mb-1"><a href="#" class="text-3 link-hover-style-1">Advanced search</a></p>
+                                        <p class="mb-1"><a href="#" class="text-3 link-hover-style-1">Login</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5 col-lg-4">
+                                <h5 class="text-4 text-color-light mb-3 mt-4 mt-lg-0">MAIN FEATURES</h5>
+                                <p class="mb-1"><a href="#" class="text-3 link-hover-style-1">Super Fast Theme</a></p>
+                                <p class="mb-1"><a href="#" class="text-3 link-hover-style-1">SEO Optmized</a></p>
+                                <p class="mb-1"><a href="#" class="text-3 link-hover-style-1">RTL Support</a></p>
+                            </div>
+                            <div class="col-lg-3">
+                                <p class="mb-1 mt-lg-3 pt-lg-3"><a href="" class="text-3">Powerful Admin Panel</a></p>
+                                <p class="mb-1"><a href="#" class="text-3 link-hover-style-1">Mobile & Retina Optimized</a></p>
+                            </div>
+                        </div>
+                        <div class="row footer-top-light-border mt-4 pt-4">
+                            <div class="col-lg-5 text-center text-md-left">
+                                <p class="text-2 mt-1">© Copyright 2020. All Rights Reserved.</p>
+                            </div>
+                            <div class="col-lg-3 text-center text-md-left">
+                                <p class="text-3 mb-0 font-weight-semibold text-color-light opacity-8">BUSINESS HOURS</p>
+                                <p class="text-3 mb-0">Mon - Sun /9:00AM -8:00PM</p>
+                            </div>
+                            <div class="col-lg-4 text-center text-md-left">
+                                <img src="~/Content/assets_2/img/payment-icon.png" alt="Payment icons" class="img-fluid mt-4 mt-lg-2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Vendor -->
+    <script src="~/Content/assets_2/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/assets_2/vendor/jquery.appear/jquery.appear.min.js"></script>
+    <script src="~/Content/assets_2/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="~/Content/assets_2/vendor/jquery.cookie/jquery.cookie.min.js"></script>
+    <script src="~/Content/assets_2/vendor/popper/umd/popper.min.js"></script>
+    <script src="~/Content/assets_2/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets_2/vendor/common/common.min.js"></script>
+    <script src="~/Content/assets_2/vendor/jquery.validation/jquery.validate.min.js"></script>
+    <script src="~/Content/assets_2/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="~/Content/assets_2/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+    <script src="~/Content/assets_2/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+    <script src="~/Content/assets_2/vendor/isotope/jquery.isotope.min.js"></script>
+    <script src="~/Content/assets_2/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="~/Content/assets_2/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/assets_2/vendor/vide/jquery.vide.min.js"></script>
+    <script src="~/Content/assets_2/vendor/vivus/vivus.min.js"></script>
+    <script src="~/Content/assets_2/vendor/bootstrap-star-rating/js/star-rating.min.js"></script>
+    <script src="~/Content/assets_2/vendor/bootstrap-star-rating/themes/krajee-fas/theme.min.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="~/Content/assets_2/js/theme.js"></script>
+
+    <!-- Current Page Vendor and Views -->
+    <script src="~/Content/assets_2/js/views/view.shop.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="~/Content/assets_2/js/custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="~/Content/assets_2/js/theme.init.js"></script>
+
+    <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-12345678-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+     -->
+    @RenderSection("script", false)
+
+</body>
+</html>
+

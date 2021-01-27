@@ -1,0 +1,121 @@
+﻿
+@{
+    ViewBag.Title = "Roles";
+}
+
+@using FoodOrderingManagementSystem.Models
+@model List<role>
+
+
+<div class="row">
+    <div class="col-md-12 Search">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">
+                    Category
+                    <label></label>
+                    <label></label>
+                    <label></label>
+                    <a href="/RoleAdmin/RoleAdd" class="btn btn-primary" accesskey="">Add<i class="material-icons">add</i></a>
+                </h4>
+                <p class="card-category"></p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Role Name</th>
+                                <th>Actions</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var roles in Model)
+                            {
+                                <tr class="Search">
+                                    <td>@roles.role_name</td>
+
+                                    <td class="actions">
+                                        <a href="/RoleAdmin/RoleUpdate/@roles.role_id" class="btn btn-modern btn-rounded btn-success mb-2">Update</a>
+                                        <a href="#" class="btn btn-modern btn-rounded btn btn-danger roleDel" data-roleid="@roles.role_id">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        function Contains(text_one, text_two) {
+            if (text_one.indexOf(text_two) != -1)
+                return true;
+        }
+        $("#Search").keyup(function () {
+            var searchText = $("#Search").val();
+            $(".Search").each(function () {
+                if (!Contains($(this).text(), searchText)) {
+                    $(this).hide();
+                }
+                else {
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>
+
+@section scripts{
+
+    <script src="~/Content/assets_2/js/required/jquery-1.11.1.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <script>
+        $(".roleDel").click(function () {
+            swal("Are you sure you want to do this?", {
+                buttons: ["No", "Yes"],
+            }).then((result) => {
+                if (result) {
+                    var roleID = $(this).data("roleid");
+
+                    $.ajax(
+                        {
+                            type: "POST",
+                            url: "/RoleAdmin/RoleDelete/" + roleID,
+                            success: function () {
+                                swal({
+                                    title: "İtem Deleted!",
+                                    text: "You clicked the button!",
+                                    icon: "success",
+                                    button: "OK",
+                                }).then(() => {
+                                    window.location.replace("/RoleAdmin/Index");
+                                });
+                            },
+                            error: function () {
+                                swal("Your imaginary file is safe!");
+                            }
+                        });
+                }
+                else {
+                    swal("Your imaginary file is safe!");
+                }
+            });
+        });
+
+    </script>
+
+}
+
+
+

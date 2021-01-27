@@ -1,0 +1,127 @@
+﻿@using FoodOrderingManagementSystem.Models
+@{
+    ViewBag.Title = "Index";
+}
+
+
+@foreach (var product in Model)
+{
+    <div class="col-sm-3 product Search">
+        <span class="product-thumb-info border-0">
+            <a href="#" class="add-to-cart-product bg-color-primary">
+                <span class="small">@product.details</span>
+            </a>
+            <a href="#">
+                <span class="product-thumb-info-image">
+                    <img alt="" width="100" height="100" src="@product.image">
+                </span>
+            </a>
+            <span class="#">
+                <a href="#">
+                    <h4 class="text-4 text-primary">@product.product_name</h4>
+                    <span class="price">
+                        <ins><span class="amount text-dark font-weight-semibold">₺@product.price</span></ins>
+                    </span>
+                </a>
+            </span>
+        </span>
+        @if (User.IsInRole("user"))
+        {
+            <form class="" action="/BasketUser/BasketAdd/@product.product_id" method="post">
+                <button type="submit" class="btn btn-primary mt-2 ml-2">Sepete Ekle</button>
+            </form>
+        }
+    </div>
+}
+        <div class="container py-4">
+
+            <div class="row">
+                <div class="col">
+                    <div class="blog-posts single-post">
+
+                        <article class="post post-large blog-single-post border-0 m-0 p-0">
+                            <div class="post-image ml-0">
+                                <div class="post-content ml-0">
+
+                                    <div id="comments" class="post-block mt-5 post-comments">
+                                        <h4 class="mb-3">Yorumlar</h4>
+                                        <h2>@ViewBag.message</h2>
+                                        <ul class="comments">
+                                            @if (ViewBag.comments != null)
+                                            {
+                                                foreach (var comment in ViewBag.comments)
+                                                {
+                                                    <li>
+                                                        <div class="comment">
+                                                            <div class="img-thumbnail img-thumbnail-no-borders d-none d-sm-block">
+                                                                <img class="avatar" alt="" src="img/avatars/avatar-2.jpg">
+                                                            </div>
+                                                            <div class="comment-block">
+                                                                <div class="comment-arrow"></div>
+                                                                <span class="comment-by">
+                                                                    <strong>@comment.user.username</strong>
+                                                                </span>
+                                                                <p>@comment.comment_text</p>
+                                                                <span class="date float-right">@comment.comment_time</span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                }
+                                            }
+                                        </ul>
+                                    </div>
+
+
+                                    @if (User.IsInRole("user"))
+                                    {
+                                        <div class="post-block mt-5 post-leave-comment">
+
+                                            <form class="contact-form p-4 rounded bg-color-grey" action="/CommentUser/CommentAdd" method="post">
+                                                <div class="p-2">
+                                                    <div class="form-row">
+                                                        <div class="form-group col">
+                                                            <label class="required font-weight-bold text-dark">Yorum</label>
+                                                            <textarea maxlength="5000" data-msg-required="Lütfen bir yorum giriniz." rows="8" class="form-control" name="comment_text" required=""></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <input type="hidden" name="restaurant_id" value="@ViewBag.restaurantID" />
+                                                    <div class="form-row">
+                                                        <div class="form-group col mb-0">
+                                                            <input type="submit" value="Post Comment" class="btn btn-primary btn-modern" data-loading-text="Loading...">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        @section script{
+
+            <script>
+                $(document).ready(function () {
+                    function Contains(text_one, text_two) {
+                        if (text_one.indexOf(text_two) != -1)
+                            return true;
+                    }
+                    $("#Search").keyup(function () {
+                        var searchText = $("#Search").val();
+                        $(".Search").each(function () {
+                            if (!Contains($(this).text(), searchText)) {
+                                $(this).hide();
+                            }
+                            else {
+                                $(this).show();
+                            }
+                        });
+                    });
+                });
+            </script>
+        }

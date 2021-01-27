@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewBag.Title = "Restaurant Add";
+}
+
+
+
+@using FoodOrderingManagementSystem.Models
+@model List<city>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Edit Profile</h4>
+                <p class="card-category">Complete your profile</p>
+            </div>
+            <label> </label>
+            <label> </label>
+            <label> </label>
+            <label> </label>
+            <div class="card-body">
+                @using (Html.BeginForm("RestaurantAdd",
+                        "RestaurantAdmin",
+                        FormMethod.Post,
+                        new { enctype = "multipart/form-data" }))
+                {
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Resturant Name</label>
+                                <input type="text" class="form-control" name="restaurant_name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <label class="bmd-label-floating">Image</label>
+                                <input id="image" type="file" class="form-control" name="file" required>
+                            </div>
+                            <label>@ViewBag.message</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Restaurant Adress</label>
+                                <input type="text" class="form-control" name="restaurant_address" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Username</label>
+                                <input type="text" class="form-control" name="username" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Password</label>
+                                <input type="password" class="form-control" name="restaurant_password" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Phone Number</label>
+                                <input type="tel" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" class="form-control" name="phone_number" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label class="">City</label>
+                                <select name="city_id">
+                                    @foreach (city city in Model)
+                                    {
+                                        <option value="@city.city_id">@city.city_name</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">Add Restaurant</button>
+                    <div class="clearfix"></div>
+
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

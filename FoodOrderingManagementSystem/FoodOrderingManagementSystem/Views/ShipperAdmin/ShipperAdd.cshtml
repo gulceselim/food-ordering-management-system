@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Shipper Add";
+}
+
+@using FoodOrderingManagementSystem.Models
+
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title">Edit Profile</h4>
+                <p class="card-category">Complete your profile</p>
+            </div>
+            <label> </label>
+            <label> </label>
+            <label> </label>
+            <label> </label>
+            <div class="card-body">
+                <form action="/ShipperAdmin/ShipperAdd" method="post" role="form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">First Name</label>
+                                <input type="text" class="form-control" name="first_name" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Last Name</label>
+                                <input type="text" class="form-control" name="last_name" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label class="bmd-label-floating">Identification Number</label>
+                                <input type="tel" pattern="[0-9]{11}" class="form-control" name="identification_number">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group bmd-form-group">
+                                <label>Restaurant</label>
+                                <select name="restaurant_id">
+                                    <option value="@Model.restaurant_id">@Model.restaurant_name</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">Add Shipper</button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
